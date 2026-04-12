@@ -25,3 +25,15 @@ export interface AnalysisResult {
   keywords: KeywordInfo[];
   uniqueAngles: AngleInfo[];
 }
+
+export interface ChapterInfo {
+  chapterNumber: number;
+  title: string;
+  summary: string;
+}
+
+export interface BookOutlineResult {
+  titleIdeas: string[];
+  targetAudience: string;
+  chapters: ChapterInfo[];
+}

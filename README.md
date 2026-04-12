@@ -18,3 +18,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1KQABwy4TVJpneINMep7_4f
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Features
+- **Niche Validation**: Analyze a topic to find profitable niches, trending topics, keywords, and unique angles.
+- **Outline Generation**: Automatically generate a comprehensive book outline based on a validated topic and a selected unique angle, including title ideas and target audience.
