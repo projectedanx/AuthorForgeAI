@@ -87,3 +87,66 @@ export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
     throw new Error("Failed to get analysis from AI. The model may be unable to generate a response for the given topic.");
   }
 };
+
+const outlineResponseSchema = {
+  type: Type.OBJECT,
+  properties: {
+    titleIdeas: {
+      type: Type.ARRAY,
+      description: "A list of catchy and relevant book title ideas.",
+      items: {
+        type: Type.STRING
+      }
+    },
+    targetAudience: {
+      type: Type.STRING,
+      description: "A description of the ideal target audience for this book."
+    },
+    chapters: {
+      type: Type.ARRAY,
+      description: "A list of chapters forming the book outline.",
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          chapterNumber: { type: Type.NUMBER, description: "The chapter number." },
+          title: { type: Type.STRING, description: "The title of the chapter." },
+          summary: { type: Type.STRING, description: "A brief summary of what the chapter covers." }
+        },
+        required: ["chapterNumber", "title", "summary"]
+      }
+    }
+  },
+  required: ["titleIdeas", "targetAudience", "chapters"]
+};
+
+export const generateBookOutline = async (topic: string, angle: string): Promise<import('../types').BookOutlineResult> => {
+  const prompt = `
+    Create a comprehensive book outline based on the following topic and unique angle.
+
+    Topic: "${topic}"
+    Unique Angle: "${angle}"
+
+    Your task is to generate a structured book outline that will appeal to readers interested in this topic, specifically focusing on the unique angle provided.
+    Provide a list of catchy title ideas, a description of the target audience, and a chapter-by-chapter outline.
+    Your response must be in JSON format matching the provided schema.
+  `;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-pro",
+      contents: prompt,
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: outlineResponseSchema,
+        temperature: 0.7,
+      },
+    });
+
+    const jsonString = response.text.trim();
+    const result = JSON.parse(jsonString);
+    return result;
+  } catch (error) {
+    console.error("Error calling Gemini API for outline generation:", error);
+    throw new Error("Failed to generate book outline from AI.");
+  }
+};

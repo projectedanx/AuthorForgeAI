@@ -4,12 +4,14 @@ import { validateNiche } from '../services/geminiService';
 import type { AnalysisResult } from '../types';
 import LoadingSpinner from './LoadingSpinner';
 import ResultCard from './ResultCard';
+import OutlineGenerator from './OutlineGenerator';
 
 const NicheValidator: React.FC = () => {
   const [topic, setTopic] = useState<string>('');
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedAngle, setSelectedAngle] = useState<string | null>(null);
 
   const handleAnalyze = useCallback(async () => {
     if (!topic.trim()) {
@@ -19,6 +21,7 @@ const NicheValidator: React.FC = () => {
     setIsLoading(true);
     setError(null);
     setAnalysis(null);
+    setSelectedAngle(null);
 
     try {
       const result = await validateNiche(topic);
@@ -102,15 +105,29 @@ const NicheValidator: React.FC = () => {
             </ul>
           </ResultCard>
           <ResultCard title="Unique Angles to Stand Out">
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {analysis.uniqueAngles.map((item, index) => (
-                <li key={index}>
-                  <strong className="text-indigo-400">{item.angle}</strong>
-                  <p className="text-slate-400 text-sm">{item.strategy}</p>
+                <li key={index} className="flex flex-col gap-2">
+                  <div>
+                    <strong className="text-indigo-400">{item.angle}</strong>
+                    <p className="text-slate-400 text-sm">{item.strategy}</p>
+                  </div>
+                  <button
+                    onClick={() => setSelectedAngle(item.angle)}
+                    className="self-start text-xs bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 px-3 py-1.5 rounded-md transition duration-200 border border-indigo-500/30"
+                  >
+                    Generate Outline for this Angle
+                  </button>
                 </li>
               ))}
             </ul>
           </ResultCard>
+        </div>
+      )}
+
+      {selectedAngle && (
+        <div className="w-full animate-fade-in-up">
+          <OutlineGenerator topic={topic} angle={selectedAngle} />
         </div>
       )}
     </section>

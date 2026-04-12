@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "EpistemicMatrix_AuthorForge_Blueprint",
+  "type": "CrossDomain_AST_Blueprint",
+  "latent_features": [
+    {
+      "feature_id": "Book_Ideation_to_Outline_Pipeline",
+      "description": "Unifies the reactive frontend ideation state with asynchronous generative AI logic to construct a structured book outline from an initial niche concept.",
+      "divergent_epistemologies": [
+        {
+          "domain": "Frontend",
+          "paradigm": "Reactive DOM State",
+          "components": [
+            "NicheValidator.tsx",
+            "OutlineGenerator.tsx",
+            "ResultCard.tsx"
+          ],
+          "state_transitions": [
+            "IDLE -> ANALYZING_NICHE -> NICHE_VALIDATED",
+            "NICHE_VALIDATED -> GENERATING_OUTLINE -> OUTLINE_GENERATED"
+          ]
+        },
+        {
+          "domain": "Backend/Service",
+          "paradigm": "Asynchronous Generative AI Logic",
+          "services": [
+            "geminiService.ts::validateNiche",
+            "geminiService.ts::generateBookOutline"
+          ],
+          "contracts": [
+            "AnalysisResult",
+            "BookOutlineResult"
+          ]
+        }
+      ],
+      "ast_mapping": {
+        "root": {
+          "type": "GenerativePipeline",
+          "input": "topic: string",
+          "stages": [
+            {
+              "id": "niche_validation",
+              "action": "validateNiche",
+              "async": true,
+              "yields": "AnalysisResult",
+              "frontend_binding": "NicheValidator.tsx::handleAnalyze"
+            },
+            {
+              "id": "outline_generation",
+              "action": "generateBookOutline",
+              "async": true,
+              "yields": "BookOutlineResult",
+              "frontend_binding": "OutlineGenerator.tsx::handleGenerateOutline"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
