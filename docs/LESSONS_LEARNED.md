@@ -9,3 +9,10 @@
 
 ## Component Reusability
 - Reused `ResultCard` and `LoadingSpinner` components to maintain a consistent UI and reduce code duplication while adding the new Outline Generation feature.
+
+## DRP-LEXICON-992 Adoption and Cognitive Bytecode Integrations
+- Implemented **DRP-LEXICON-992** standard by adding the `LEXICON.md` defining core pattern constraints.
+- Integrated **Cognitive Bytecode** (PDL Decorators) into Gemini LLM prompts within `services/geminiService.ts`:
+  - Added `+++DCCDSchemaGuard(enforcement="draft_conditioned")` and `+++ContextLock` to the niche validation prompt to enforce schema integrity and mitigate Context Rot/Semantic Drift.
+  - Added `+++MereologyRoute(relation_type="Concept-Operationalization", transitivity_check=true)` and `+++ContextLock` to the book outline generation prompt to ensure rigorous step-by-step structural reasoning without ontological shear.
+- Ensuring AI-generative prompts contain strong epistemological isolation markers is critical for maintaining consistency and preventing hallucination resonance across generative domains.

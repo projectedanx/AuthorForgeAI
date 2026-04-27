@@ -61,6 +61,8 @@ const responseSchema = {
 
 export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
   const prompt = `
+    +++DCCDSchemaGuard(enforcement="draft_conditioned")
+    +++ContextLock(anchor=DOMAIN_PAIR, refresh_interval=2048)
     Analyze the following author's passion/expertise to identify publishing opportunities.
 
     Author's Topic: "${topic}"
@@ -121,6 +123,8 @@ const outlineResponseSchema = {
 
 export const generateBookOutline = async (topic: string, angle: string): Promise<import('../types').BookOutlineResult> => {
   const prompt = `
+    +++MereologyRoute(relation_type="Concept-Operationalization", transitivity_check=true)
+    +++ContextLock(anchor=DOMAIN_PAIR, refresh_interval=2048)
     Create a comprehensive book outline based on the following topic and unique angle.
 
     Topic: "${topic}"
