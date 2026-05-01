@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
-import type { AnalysisResult } from '../types';
+import type { AnalysisResult, BookOutlineResult, CMDARefinementResult } from '../types';
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
 
@@ -152,5 +152,75 @@ export const generateBookOutline = async (topic: string, angle: string): Promise
   } catch (error) {
     console.error("Error calling Gemini API for outline generation:", error);
     throw new Error("Failed to generate book outline from AI.");
+  }
+};
+
+
+const cmdaRefinementSchema = {
+  type: Type.OBJECT,
+  properties: {
+    contradictionResolution: {
+      type: Type.STRING,
+      description: "Explanation of how the contradictory human constraint and original topic are held in tension."
+    },
+    cfdiScore: {
+      type: Type.NUMBER,
+      description: "Confidence-Fidelity Divergence Index (a value between 0.0 and 1.0 indicating the strictness of the adherence, closer to 0 is better)."
+    },
+    refinedChapters: {
+      type: Type.ARRAY,
+      description: "The list of chapters refined to incorporate the human constraint.",
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          chapterNumber: { type: Type.NUMBER, description: "The chapter number." },
+          title: { type: Type.STRING, description: "The refined title of the chapter." },
+          summary: { type: Type.STRING, description: "The refined summary incorporating the contradiction." }
+        },
+        required: ["chapterNumber", "title", "summary"]
+      }
+    }
+  },
+  required: ["contradictionResolution", "cfdiScore", "refinedChapters"]
+};
+
+export const refineOutlineCMDA = async (topic: string, angle: string, originalOutline: BookOutlineResult, humanConstraint: string): Promise<CMDARefinementResult> => {
+  const prompt = `
+    +++ParaconsistentLens[Contradiction -> Opportunity -> Architecture]
+    +++DCCDSchemaGuard(enforcement="draft_conditioned")
+    +++ContextLock(anchor=DOMAIN_PAIR, refresh_interval=2048)
+
+    You are tasked with applying Context-Mediated Domain Adaptation (CMDA). The user has provided an original book outline generated for a specific topic, but now wishes to inject a "Tacit Constraint" or contradictory directive.
+
+    Topic: "${topic}"
+    Angle: "${angle}"
+    Human Constraint (Contradiction to hold in tension): "${humanConstraint}"
+
+    Original Outline Structure:
+    ${JSON.stringify(originalOutline.chapters, null, 2)}
+
+    Your task is NOT to flatten this contradiction or create a watered-down compromise (Sycophantic Attractor). Instead, hold the tension. Refine the chapter titles and summaries to explicitly serve both the original topic and the new constraint simultaneously.
+    Ensure that the returned CFDI score reflects the mathematical rigour of this binding.
+
+    Your response must be in JSON format matching the provided schema.
+  `;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-pro",
+      contents: prompt,
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: cmdaRefinementSchema,
+        temperature: 0.8, // Slightly higher to allow conceptual blending
+      },
+    });
+
+    const jsonString = response.text.trim();
+    const result = JSON.parse(jsonString);
+    return result;
+  } catch (error) {
+    console.error("Error calling Gemini API for CMDA refinement:", error);
+    throw new Error("Failed to refine outline using CMDA.");
   }
 };

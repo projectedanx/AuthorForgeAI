@@ -37,3 +37,9 @@ export interface BookOutlineResult {
   targetAudience: string;
   chapters: ChapterInfo[];
 }
+
+export interface CMDARefinementResult {
+  contradictionResolution: string;
+  cfdiScore: number;
+  refinedChapters: ChapterInfo[];
+}

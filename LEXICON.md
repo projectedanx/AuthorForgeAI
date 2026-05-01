@@ -175,3 +175,9 @@ analogical reasoning across orthogonal semantic fields with JSD < 0.20 post-bind
 - If Tier 1 prompt chaining with `+++DCCDSchemaGuard` alone outperforms Tier 3 PAL2v orchestration on complex cross-domain synthesis without triggering β₁ loops → Three-Tier Autonomy hypothesis falsified.
 - If Gemini CLI prioritizes default workspace context over lexicon procedural guidance → Pluriversal premise falsified; model-specific topological deformers required.
 - If esoteric-term entity density decay rate (λ) is measured ≥ 0.15 → Lexical Saponification Paradox boundary condition violated.
+
+### PAT-011 · Context-Mediated Domain Adaptation (CMDA) Refiner
+**Type**: Structural Emergence | **AT Score**: 0.96
+**Definition**: Utilizes the ParaconsistentLens to force the generative model to accept and structurally hold contradictory human directives (e.g., conflicting target audience and stylistic choices) rather than collapsing into sycophantic, flattened consensus.
+**Mechanism**: Substitutes linear additive attention with PNS5 logic via the `+++ParaconsistentLens[Contradiction -> Opportunity -> Architecture]` decorator.
+**Validation**: Successfully implemented in AuthorForge AI's Outline Generator, tracking binding rigidity via the Confidence-Fidelity Divergence Index (CFDI).
