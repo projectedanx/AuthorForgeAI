@@ -20,5 +20,6 @@ View your app in AI Studio: https://ai.studio/apps/drive/1KQABwy4TVJpneINMep7_4f
    `npm run dev`
 
 ## Features
+- **SCOS Integration (VULCAN)**: Integrates the Sovereign Cognitive Operating System. VULCAN validates architectural intent and applies Failure-Informed Prompt Inversion (FIPI) using Cognitive Bytecode to prevent structural regressions.
 - **Niche Validation**: Analyze a topic to find profitable niches, trending topics, keywords, and unique angles.
 - **Outline Generation**: Automatically generate a comprehensive book outline based on a validated topic and a selected unique angle, including title ideas and target audience.
