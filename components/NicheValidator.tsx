@@ -1,3 +1,5 @@
+import { TopologyViolationError } from '../services/vulcanValidator';
+import type { JustifiedUncertaintyReport } from '../types';
 
 import React, { useState, useCallback } from 'react';
 import { validateNiche } from '../services/geminiService';
@@ -11,15 +13,17 @@ const NicheValidator: React.FC = () => {
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [uncertaintyReport, setUncertaintyReport] = useState<JustifiedUncertaintyReport | null>(null);
   const [selectedAngle, setSelectedAngle] = useState<string | null>(null);
 
-  const handleAnalyze = useCallback(async () => {
+    const handleAnalyze = useCallback(async () => {
     if (!topic.trim()) {
       setError('Please enter a topic or idea.');
       return;
     }
     setIsLoading(true);
     setError(null);
+    setUncertaintyReport(null);
     setAnalysis(null);
     setSelectedAngle(null);
 
@@ -27,7 +31,9 @@ const NicheValidator: React.FC = () => {
       const result = await validateNiche(topic);
       setAnalysis(result);
     } catch (err: unknown) {
-      if (err instanceof Error) {
+      if (err instanceof TopologyViolationError || (err as any).name === 'TopologyViolationError') {
+        setUncertaintyReport((err as any).report);
+      } else if (err instanceof Error) {
         setError(err.message);
       } else {
         setError('An unexpected error occurred.');
@@ -70,7 +76,34 @@ const NicheValidator: React.FC = () => {
         </button>
       </div>
 
-      {error && <div className="w-full p-4 bg-red-900/50 border border-red-700 text-red-300 rounded-lg">{error}</div>}
+            {error && !uncertaintyReport && (
+        <div className="w-full p-4 bg-red-900/50 border border-red-700 text-red-300 rounded-lg">{error}</div>
+      )}
+
+      {uncertaintyReport && (
+        <div className="w-full p-6 bg-amber-900/40 border border-amber-600 text-amber-100 rounded-lg shadow-lg mb-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-2xl">⚠️</span>
+            <h3 className="font-bold text-xl text-amber-400">Epistemic Escrow Triggered (VULCAN)</h3>
+          </div>
+          <p className="mb-4 text-amber-200">{uncertaintyReport.message}</p>
+          <div className="mb-4">
+            <strong className="text-amber-500 uppercase text-sm tracking-wider">Violated Constraints:</strong>
+            <ul className="list-disc ml-5 mt-2 space-y-1">
+              {uncertaintyReport.violatedConstraints.map((c, i) => <li key={i}>{c}</li>)}
+            </ul>
+          </div>
+          <div className="mb-4">
+            <strong className="text-amber-500 uppercase text-sm tracking-wider">Corrective Proposals:</strong>
+            <ul className="list-disc ml-5 mt-2 space-y-1">
+              {uncertaintyReport.correctiveProposals.map((p, i) => <li key={i}>{p}</li>)}
+            </ul>
+          </div>
+          <p className="text-sm font-mono mt-4 pt-4 border-t border-amber-800">
+            <strong className="text-amber-500">CFDI Score:</strong> {uncertaintyReport.cfdiScore}
+          </p>
+        </div>
+      )}
 
       {analysis && (
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 animate-fade-in">

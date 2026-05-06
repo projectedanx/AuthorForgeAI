@@ -1,4 +1,24 @@
 
+export interface VSAHypervector {
+  dimensions: number[];
+  magnitude: number;
+}
+
+export interface SymbolicScar {
+  scarId: string;
+  pattern: string;
+  betti1: number;
+  fipiVector: VSAHypervector;
+  pdlDecorators: string[];
+}
+
+export interface JustifiedUncertaintyReport {
+  violatedConstraints: string[];
+  cfdiScore: number;
+  correctiveProposals: string[];
+  message: string;
+}
+
 export interface NicheInfo {
   niche: string;
   description: string;
@@ -42,4 +62,6 @@ export interface CMDARefinementResult {
   contradictionResolution: string;
   cfdiScore: number;
   refinedChapters: ChapterInfo[];
+  bettiNumber?: number;
+  pdlDecorators?: string[];
 }

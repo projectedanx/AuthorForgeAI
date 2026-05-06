@@ -1,3 +1,4 @@
+import { VulcanTopologyValidator, TopologyViolationError } from './vulcanValidator';
 
 import { GoogleGenAI, Type } from "@google/genai";
 import type { AnalysisResult, BookOutlineResult, CMDARefinementResult } from '../types';
@@ -60,7 +61,11 @@ const responseSchema = {
 };
 
 export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
+  const { pdlDecorators } = VulcanTopologyValidator.assessIntentTopology(topic);
+  const injectedDecorators = pdlDecorators.join("\n    ");
+
   const prompt = `
+    ${injectedDecorators}
     +++DCCDSchemaGuard(enforcement="draft_conditioned")
     +++ContextLock(anchor=DOMAIN_PAIR, refresh_interval=2048)
     Analyze the following author's passion/expertise to identify publishing opportunities.
@@ -122,7 +127,11 @@ const outlineResponseSchema = {
 };
 
 export const generateBookOutline = async (topic: string, angle: string): Promise<import('../types').BookOutlineResult> => {
+  const { pdlDecorators } = VulcanTopologyValidator.assessIntentTopology(topic + " " + angle);
+  const injectedDecorators = pdlDecorators.join("\n    ");
+
   const prompt = `
+    ${injectedDecorators}
     +++MereologyRoute(relation_type="Concept-Operationalization", transitivity_check=true)
     +++ContextLock(anchor=DOMAIN_PAIR, refresh_interval=2048)
     Create a comprehensive book outline based on the following topic and unique angle.
@@ -185,7 +194,11 @@ const cmdaRefinementSchema = {
 };
 
 export const refineOutlineCMDA = async (topic: string, angle: string, originalOutline: BookOutlineResult, humanConstraint: string): Promise<CMDARefinementResult> => {
+  const { pdlDecorators } = VulcanTopologyValidator.assessIntentTopology(topic + " " + angle + " " + humanConstraint);
+  const injectedDecorators = pdlDecorators.join("\n    ");
+
   const prompt = `
+    ${injectedDecorators}
     +++ParaconsistentLens[Contradiction -> Opportunity -> Architecture]
     +++DCCDSchemaGuard(enforcement="draft_conditioned")
     +++ContextLock(anchor=DOMAIN_PAIR, refresh_interval=2048)
@@ -201,6 +214,8 @@ export const refineOutlineCMDA = async (topic: string, angle: string, originalOu
 
     Your task is NOT to flatten this contradiction or create a watered-down compromise (Sycophantic Attractor). Instead, hold the tension. Refine the chapter titles and summaries to explicitly serve both the original topic and the new constraint simultaneously.
     Ensure that the returned CFDI score reflects the mathematical rigour of this binding.
+    Return any injected active PDL decorators in the pdlDecorators array of the response.
+    Return betti number > 0 if any architectural contradiction (scar) remains unresolved in the bettiNumber field of the response.
 
     Your response must be in JSON format matching the provided schema.
   `;
