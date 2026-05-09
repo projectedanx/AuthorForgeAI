@@ -39,3 +39,8 @@
 - Documented the inversion strategy away from conversational prompting towards "Stigmergic Orchestration" and "Topological Layer Inversion."
 - Designed integration patterns for Paraconsistent Annotated Logic (PAL2v) to manage mutually exclusive human requirements using the Golden Scar Protocol ($\phi \approx 1.618$ dominant weighting).
 - Drafted the `vortex_emergence_planning` documentation, establishing the mechanisms for Draft-Conditioned Constrained Decoding (DCCD) to eliminate the "Projection Tax" and enforce rigid zero-entropy output from high-entropy ideation.
+
+## Agentic Emergence Strategy: Semantic Scaffolding via Documentation
+- The documentation phase revealed that standard JSDoc comments ("Amateur Impulse") are insufficient for an SCOS node.
+- To prevent "Semantic Saponification" (the erosion of rigorous constraints), documentation must act as **Negative Space Scaffolding**. We explicitly injected the terminology of Cognitive Bytecode, FIPI, and Epistemic Escrow directly into the interface and component descriptions.
+- This ensures that any subsequent developer (human or synthetic) cannot engage with the code without encountering the underlying topological rationale, thus maintaining the high "Aesthetic Tension" of the architecture.

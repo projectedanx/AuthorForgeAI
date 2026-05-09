@@ -1,8 +1,26 @@
+/**
+ * @fileoverview Defines the VULCAN Validator (Sovereign Cognitive Operating System - SCOS Node).
+ * Acts as an Epistemic Escrow to intercept and evaluate human intent against structural constraints
+ * prior to generative AI execution. Implements Failure-Informed Prompt Inversion (FIPI).
+ */
+
 import { SymbolicScar, JustifiedUncertaintyReport } from '../types';
 
+/**
+ * Custom error class thrown when a user's intent violates fundamental architectural topologies
+ * (e.g., requesting a CAP theorem violation). Triggers an Epistemic Escrow event in the UI.
+ *
+ * @extends Error
+ */
 export class TopologyViolationError extends Error {
+  /** The detailed report containing the violated constraints and corrective proposals. */
   public report: JustifiedUncertaintyReport;
 
+  /**
+   * Constructs a new TopologyViolationError.
+   *
+   * @param {JustifiedUncertaintyReport} report - The data structure detailing the epistemic failure.
+   */
   constructor(report: JustifiedUncertaintyReport) {
     super(report.message);
     this.name = 'TopologyViolationError';
@@ -10,7 +28,19 @@ export class TopologyViolationError extends Error {
   }
 }
 
+/**
+ * The VULCAN Validator acts as a deterministic firewall (Negative Space Scaffolding)
+ * against high-entropy, impossible, or pathological human intent.
+ */
 export class VulcanTopologyValidator {
+  /**
+   * An internal archive of learned architectural pathologies represented as Symbolic Scars.
+   * Used to pattern-match incoming intent and retrieve corrective Cognitive Bytecode.
+   *
+   * @private
+   * @static
+   * @type {SymbolicScar[]}
+   */
   private static scarArchive: SymbolicScar[] = [
     {
       scarId: 'SCAR-001',
@@ -43,6 +73,18 @@ export class VulcanTopologyValidator {
     }
   ];
 
+  /**
+   * Evaluates the raw user intent against known structural pathologies and constraints.
+   *
+   * This method applies the Failure-Informed Prompt Inversion (FIPI) loop. It checks the intent
+   * against the `scarArchive`. If an absolute impossibility is detected, it throws a `TopologyViolationError`
+   * (Epistemic Escrow). Otherwise, it gathers and returns the necessary PDL decorators (Cognitive Bytecode)
+   * to constrain the subsequent generative AI process.
+   *
+   * @param {string} intent - The raw, unstructured request provided by the human user.
+   * @returns {{ pdlDecorators: string[] }} An object containing an array of PDL decorators to be injected into the LLM prompt.
+   * @throws {TopologyViolationError} Thrown if the intent requests an impossible synthesis (e.g., CAP theorem violation).
+   */
   public static assessIntentTopology(intent: string): { pdlDecorators: string[] } {
     const lowercaseIntent = intent.toLowerCase();
 

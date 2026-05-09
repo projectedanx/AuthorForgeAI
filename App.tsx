@@ -1,8 +1,18 @@
+/**
+ * @fileoverview The root application component.
+ * Establishes the global layout and renders the primary Epistemic Window (NicheValidator).
+ */
 
 import React from 'react';
 import Header from './components/Header';
 import NicheValidator from './components/NicheValidator';
 
+/**
+ * Functional component representing the structural core of the AuthorForge UI.
+ * Integrates the branding header and the primary interaction node.
+ *
+ * @returns {React.ReactElement} The complete application layout.
+ */
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-200 font-sans">

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Defines the NicheValidator component.
+ * Acts as the primary entry point for user intent, orchestrating the initial market analysis
+ * and rendering the primary Epistemic Escrow alerts if VULCAN detects a topology violation.
+ */
+
 import { TopologyViolationError } from '../services/vulcanValidator';
 import type { JustifiedUncertaintyReport } from '../types';
 
@@ -8,6 +14,12 @@ import LoadingSpinner from './LoadingSpinner';
 import ResultCard from './ResultCard';
 import OutlineGenerator from './OutlineGenerator';
 
+/**
+ * Functional component managing the state and UI for validating an initial book topic/niche.
+ * Integrates directly with the `validateNiche` service, which applies Failure-Informed Prompt Inversion (FIPI).
+ *
+ * @returns {React.ReactElement} The NicheValidator interface, including dynamic rendering of analysis results.
+ */
 const NicheValidator: React.FC = () => {
   const [topic, setTopic] = useState<string>('');
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
@@ -16,6 +28,11 @@ const NicheValidator: React.FC = () => {
   const [uncertaintyReport, setUncertaintyReport] = useState<JustifiedUncertaintyReport | null>(null);
   const [selectedAngle, setSelectedAngle] = useState<string | null>(null);
 
+  /**
+   * Orchestrates the market analysis process.
+   * Transmits the high-entropy user input to the backend, updating UI state based on
+   * structural validation (VULCAN) or generative success.
+   */
     const handleAnalyze = useCallback(async () => {
     if (!topic.trim()) {
       setError('Please enter a topic or idea.');

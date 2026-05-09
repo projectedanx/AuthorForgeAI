@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Defines the OutlineGenerator component.
+ * Responsible for managing the UI state for generating initial book outlines and subsequently
+ * applying the Context-Mediated Domain Adaptation (CMDA) refinement process.
+ */
+
 import { TopologyViolationError } from '../services/vulcanValidator';
 import type { JustifiedUncertaintyReport } from '../types';
 import React, { useState, useCallback } from 'react';
@@ -6,11 +12,26 @@ import type { BookOutlineResult, CMDARefinementResult } from '../types';
 import LoadingSpinner from './LoadingSpinner';
 import ResultCard from './ResultCard';
 
+/**
+ * Props defining the initial context required to generate an outline.
+ *
+ * @interface OutlineGeneratorProps
+ */
 interface OutlineGeneratorProps {
+  /** The base topic validated by the parent component. */
   topic: string;
+  /** The specific, unique angle the outline should focus on. */
   angle: string;
 }
 
+/**
+ * Functional component that orchestrates the generative outline process.
+ * Acts as a secondary Epistemic Window, capable of displaying VULCAN escrow events
+ * occurring specifically during the generation or refinement phases.
+ *
+ * @param {OutlineGeneratorProps} props - The topic and angle context.
+ * @returns {React.ReactElement} The rendered OutlineGenerator interface.
+ */
 const OutlineGenerator: React.FC<OutlineGeneratorProps> = ({ topic, angle }) => {
   const [outline, setOutline] = useState<BookOutlineResult | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -22,8 +43,11 @@ const OutlineGenerator: React.FC<OutlineGeneratorProps> = ({ topic, angle }) => 
   const [isRefining, setIsRefining] = useState<boolean>(false);
   const [refineError, setRefineError] = useState<string | null>(null);
 
-
-
+  /**
+   * Orchestrates the CMDA refinement process.
+   * Invokes the Gemini service to topologically sculpt the existing outline based on a new contradictory human constraint.
+   * Updates component state with the refined results or resulting errors.
+   */
   const handleRefineOutline = useCallback(async () => {
     if (!outline || !humanConstraint.trim()) return;
     setIsRefining(true);
@@ -44,6 +68,11 @@ const OutlineGenerator: React.FC<OutlineGeneratorProps> = ({ topic, angle }) => 
     }
   }, [topic, angle, outline, humanConstraint]);
 
+  /**
+   * Orchestrates the initial book outline generation process.
+   * Handles asynchronous communication with the Gemini service and updates state based on
+   * successful generation, standard errors, or Epistemic Escrow triggers (TopologyViolationError).
+   */
     const handleGenerateOutline = useCallback(async () => {
     setIsLoading(true);
     setError(null);
