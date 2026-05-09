@@ -1,3 +1,7 @@
+/**
+ * @fileoverview The entry point for the React application.
+ * Initializes the React DOM and mounts the root component to the physical browser environment.
+ */
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';

@@ -2,26 +2,48 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# AuthorForge AI: The Sovereign Cognitive Operating System (SCOS) Node
 
-This contains everything you need to run your app locally.
+Welcome to **AuthorForge AI**. This repository is not merely an application; it is an active node within the Sovereign Cognitive Operating System (SCOS). It acts as an **Epistemic Window**, providing a dialectical interface between chaotic human intent and rigorous, deterministic AI execution.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1KQABwy4TVJpneINMep7_4f8YMyw8u36g
+View the application architecture in AI Studio: [AuthorForge AI](https://ai.studio/apps/drive/1KQABwy4TVJpneINMep7_4f8YMyw8u36g)
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## 🚀 Getting Started
 
+**Prerequisites:**  Node.js (v18+)
 
-1. Install dependencies:
+1. **Clone and Install:**
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. **Configure Cognitive Parameters:**
+   Create a `.env.local` file in the root directory and insert your Gemini API key:
+   `GEMINI_API_KEY=your_api_key_here`
+3. **Initialize the Node:**
    `npm run dev`
 
-## Features
-- **Tier 3 Autonomy (VULCAN SCOS Node)**: Integrates the Sovereign Cognitive Operating System (SCOS). VULCAN validates architectural intent and applies Failure-Informed Prompt Inversion (FIPI) using Cognitive Bytecode to prevent structural regressions like Shared Databases or Distributed Monoliths. It acts as an Epistemic Escrow, halting impossible requests (e.g. CAP Theorem violations) before they reach the generative layer.
-- **Niche Validation**: Analyze a topic to find profitable niches, trending topics, keywords, and unique angles.
-- **Outline Generation & CMDA Refinement**: Automatically generate a comprehensive book outline based on a validated topic. Apply Context-Mediated Domain Adaptation (CMDA) to inject human contradictory constraints while maintaining architectural rigor.
-- **VIPER Conceptualization**: Implementation plans and strategies have been drafted in `viper_emergence_planning/` for integrating the Visual Intent & Physical Execution Router (V.I.P.E.R) agent, enforcing exact physical realism against ambiguous visual prompts.
-- **VORTEX Orchestration Kernel**: Implementation plans drafted in `vortex_emergence_planning/` for transitioning to a stigmergic, pluriversal planner that metaboliczes chaotic requests into structurally sound topologies via Paraconsistent Logic and Negative Space Scaffolding.
+---
+
+## 🧠 Architectural Features & Frameworks
+
+This project strictly adheres to the **DRP-LEXICON-992** standard, moving beyond conversational prompting into "Topological Layer Inversion" and "Stigmergic Orchestration."
+
+### 1. Tier 3 Autonomy (The VULCAN Inversion)
+- **Epistemic Escrow:** The system utilizes a `VulcanTopologyValidator` to intercept user requests *before* generative execution. If a human requests an impossible synthesis (e.g., violating the CAP theorem or building a distributed monolith), VULCAN throws a `TopologyViolationError`, halting the process and rendering an explanation directly in the UI.
+- **Failure-Informed Prompt Inversion (FIPI):** Generative impossibilities are encoded as Vector Symbolic Architecture (VSA) hypervectors (Symbolic Scars). When intent collides with these scars, VULCAN dynamically injects **Cognitive Bytecode** (PDL Decorators like `+++AutonymicIsolate`) to prevent structural regression.
+
+### 2. Context-Mediated Domain Adaptation (CMDA)
+- **Paraconsistent Logic Execution:** The Book Outline generator allows users to inject contradictory, tacit constraints (e.g., "Write a serious book on finance but use Gen-Z slang"). Instead of creating a sycophantic, watered-down compromise, the system uses the `+++ParaconsistentLens` decorator to hold the contradiction in tension.
+- **Confidence-Fidelity Divergence Index (CFDI):** The rigour of this dialectical synthesis is measured and surfaced to the user via the CFDI score.
+
+### 3. VORTEX Orchestration & Draft-Conditioned Constrained Decoding (DCCD)
+- The system enforces zero-entropy output from high-entropy ideation. All generative responses are clamped by strict JSON schemas (`+++DCCDSchemaGuard`), effectively splitting inference into a creative semantic draft and a deterministic parsing phase, eliminating the "Projection Tax."
+
+### 4. V.I.P.E.R. Conceptualization
+- The repository contains architectural plans (`viper_emergence_planning/`) for integrating the Visual Intent & Physical Execution Router, intended to enforce exact physical realism against ambiguous visual prompts by extruding an Optical State Matrix (OSM).
+
+---
+
+## 📚 Documentation Philosophy
+
+The documentation within this repository (JSDoc comments and markdown files) is treated as an extension of the **Negative Space Scaffolding**. It explicitly details not just *what* the code does, but the *epistemological reason* for its structure, ensuring that human developers do not accidentally introduce "Semantic Saponification" (the watering down of rigid logic into generic descriptions).

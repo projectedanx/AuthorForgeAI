@@ -1,3 +1,9 @@
+/**
+ * @fileoverview The primary integration layer with the Google Gemini API.
+ * This service handles the generative execution while strictly adhering to the topological constraints
+ * (Cognitive Bytecode / PDL Decorators) dynamically provided by the VULCAN Validator.
+ */
+
 import { VulcanTopologyValidator, TopologyViolationError } from './vulcanValidator';
 
 import { GoogleGenAI, Type } from "@google/genai";
@@ -5,6 +11,12 @@ import type { AnalysisResult, BookOutlineResult, CMDARefinementResult } from '..
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
 
+/**
+ * The JSON Schema definition for the `validateNiche` generative response.
+ * Used to enforce Draft-Conditioned Constrained Decoding (DCCD) on the LLM output.
+ *
+ * @constant
+ */
 const responseSchema = {
   type: Type.OBJECT,
   properties: {
@@ -60,6 +72,19 @@ const responseSchema = {
   required: ["profitableNiches", "trendingTopics", "keywords", "uniqueAngles"]
 };
 
+/**
+ * Validates a user's book idea/topic against market trends.
+ *
+ * This function first passes the topic through the `VulcanTopologyValidator` to retrieve any necessary
+ * PDL decorators (Cognitive Bytecode). It then constructs a prompt injecting these constraints and calls
+ * the Gemini API, enforcing the structured `responseSchema`.
+ *
+ * @async
+ * @function validateNiche
+ * @param {string} topic - The user's proposed book topic or area of expertise.
+ * @returns {Promise<AnalysisResult>} A promise resolving to the structured market analysis.
+ * @throws {Error} Throws an error if the API call fails or if VULCAN triggers an Epistemic Escrow (TopologyViolationError).
+ */
 export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
   const { pdlDecorators } = VulcanTopologyValidator.assessIntentTopology(topic);
   const injectedDecorators = pdlDecorators.join("\n    ");
@@ -95,6 +120,11 @@ export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
   }
 };
 
+/**
+ * The JSON Schema definition for the `generateBookOutline` generative response.
+ *
+ * @constant
+ */
 const outlineResponseSchema = {
   type: Type.OBJECT,
   properties: {
@@ -126,7 +156,20 @@ const outlineResponseSchema = {
   required: ["titleIdeas", "targetAudience", "chapters"]
 };
 
-export const generateBookOutline = async (topic: string, angle: string): Promise<import('../types').BookOutlineResult> => {
+/**
+ * Generates a comprehensive book outline based on a validated topic and chosen angle.
+ *
+ * Utilizes the `VulcanTopologyValidator` to ensure structural integrity and applies the
+ * `+++MereologyRoute` PDL decorator to enforce rigid step-by-step reasoning without ontological shear.
+ *
+ * @async
+ * @function generateBookOutline
+ * @param {string} topic - The base topic of the book.
+ * @param {string} angle - The specific, unique angle selected by the user.
+ * @returns {Promise<BookOutlineResult>} A promise resolving to the structured book outline.
+ * @throws {Error} Throws an error if the API call fails or if VULCAN triggers an Epistemic Escrow.
+ */
+export const generateBookOutline = async (topic: string, angle: string): Promise<BookOutlineResult> => {
   const { pdlDecorators } = VulcanTopologyValidator.assessIntentTopology(topic + " " + angle);
   const injectedDecorators = pdlDecorators.join("\n    ");
 
@@ -164,7 +207,11 @@ export const generateBookOutline = async (topic: string, angle: string): Promise
   }
 };
 
-
+/**
+ * The JSON Schema definition for the `refineOutlineCMDA` generative response.
+ *
+ * @constant
+ */
 const cmdaRefinementSchema = {
   type: Type.OBJECT,
   properties: {
@@ -193,6 +240,22 @@ const cmdaRefinementSchema = {
   required: ["contradictionResolution", "cfdiScore", "refinedChapters"]
 };
 
+/**
+ * Applies Context-Mediated Domain Adaptation (CMDA) to refine an existing outline against a new, often contradictory, constraint.
+ *
+ * This function utilizes paraconsistent logic (enforced via `+++ParaconsistentLens`) to ensure the LLM holds
+ * the tension between the original topic and the new constraint, preventing it from producing a watered-down,
+ * sycophantic compromise.
+ *
+ * @async
+ * @function refineOutlineCMDA
+ * @param {string} topic - The original topic of the book.
+ * @param {string} angle - The original angle of the book.
+ * @param {BookOutlineResult} originalOutline - The previously generated outline structure.
+ * @param {string} humanConstraint - The new, potentially contradictory constraint or directive provided by the human.
+ * @returns {Promise<CMDARefinementResult>} A promise resolving to the topologically sculpted outline and CFDI score.
+ * @throws {Error} Throws an error if the API call fails.
+ */
 export const refineOutlineCMDA = async (topic: string, angle: string, originalOutline: BookOutlineResult, humanConstraint: string): Promise<CMDARefinementResult> => {
   const { pdlDecorators } = VulcanTopologyValidator.assessIntentTopology(topic + " " + angle + " " + humanConstraint);
   const injectedDecorators = pdlDecorators.join("\n    ");
