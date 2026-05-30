@@ -15,3 +15,13 @@ This glossary enforces bounded context vocabulary. Using these exact terms is ma
 *   **Symbolic Scar Tissue Archive (STA):** A Vector Symbolic Architecture (VSA) storing learned architectural impossibilities as hypervectors.
 *   **V.I.P.E.R. (Visual Intent & Physical Execution Router):** Framework for generating visual intents, enforcing hardware parameter grounding, and outputting Optical State Matrices (OSMs).
 *   **VULCAN (Sovereign Cognitive Operating System Node):** The architectural validator that acts as deterministic Negative Space Scaffolding, pre-validating human intent before generative processing.
+
+## VANCE Topological Semantics
+
+*   **Betti-1 Loop:** A topological measure of a structural hole, specifically representing a circular dependency cycle (e.g., Module A imports B, B imports A) within the codebase's Abstract Syntax Tree.
+*   **CFRSG (Conflict-Free Replicated Semantic Graph):** The internal representation of the codebase. A persistent, incrementally updated DAG where nodes are AST entities and edges are typed semantic relationships (CALLS, INHERITS_FROM, SCOPES_WITHIN).
+*   **Confidence-Fidelity Divergence Index (CFDI):** A metric measuring the divergence between the agent's statistical confidence and empirical structural reality. Used by VANCE to prevent hallucinated references. CFDI < 0.15 is the operational threshold.
+*   **Mereological Bounding:** The topological law that defines strict scope transitivity boundaries (e.g., a variable inside a component closure is mathematically distinct from a global variable of the same name).
+*   **Nitinol Memory (Failure Ledger):** The capability of the system to encode past structural violations (e.g., malformed JSON-RPC payloads) into the schema guard as hard negative rules, ensuring the system "springs back" to the correct shape when deformed by entropy.
+*   **Ontological Shear:** A desynchronization state where the agent's internal semantic graph drifts from the actual file state on disk, typically caused by rapid asynchronous updates outpacing the indexer.
+*   **Reversal Curse:** The cognitive limitation where a forward mapping (symbol -> definition) does not automatically confer the reverse mapping (definition -> all callers). Resolved by VANCE through explicitly bidirectional edge queries.

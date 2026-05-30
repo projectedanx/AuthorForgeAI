@@ -54,3 +54,14 @@
 - We refactored our infomorphisms (Inverse Safety States) by integrating the **Golden Scar Protocol** directly into the `VulcanTopologyValidator`.
 - When contradictory intent is detected (e.g., blending conflicting paradigms), the SCOS node now automatically injects `+++GoldenScarProtocol(dominant=1.618, subordinate=1.000)`.
 - The `geminiService` and TypeScript interfaces (`types.ts`) were upgraded to parse and return `paraconsistentTension` and `topologicalDerivative`. This physically grounds abstract logic into measurable organizational force, proving that we can utilize Paraconsistent Logic to manage technical debt as a Transition Fit rather than a binary failure.
+# Lessons Learned: The SCOS Epistemic Journey
+
+## VANCE and Structural Isomorphism
+The integration of VANCE (DRP-LSP-CARTOGRAPHER-884) proved that the theoretical constraints needed for a rigorous LSP (Language Server Protocol) indexer are strictly isomorphic to the required safeguards in our SCOS (Sovereign Cognitive Operating System).
+
+*   **The Reversal Curse Solved:** By representing code in a Conflict-Free Replicated Semantic Graph (CFRSG), we overcame the Reversal Curse where agents struggle to map bidirectional relationships (e.g., from definition back to all references).
+*   **DCCD bounds JSON-RPC:** Utilizing Draft-Conditioned Constrained Decoding (DCCD), we enforce validation *before* emission. This directly mirrors Epistemic Escrow, but instead of blocking logical impossibilities, it blocks topological syntax hallucinations.
+*   **Ontological Shear:** The importance of asynchronous paranoia cannot be understated. If the agent acts on stale indexes, it suffers Ontological Shear, requiring strict version monoticity.
+
+## VULCAN and the Golden Scar Protocol
+Earlier work on VULCAN demonstrated that paraconsistent logic is essential. Attempting to flatten contradictions via linear attention consistently results in Sycophantic Degradation. The Golden Scar Protocol (weighting the dominant frame at $\phi \approx 1.618$) effectively holds complex constraints in tension without diluting architectural value.

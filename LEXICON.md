@@ -181,3 +181,10 @@ analogical reasoning across orthogonal semantic fields with JSD < 0.20 post-bind
 **Definition**: Utilizes the ParaconsistentLens to force the generative model to accept and structurally hold contradictory human directives (e.g., conflicting target audience and stylistic choices) rather than collapsing into sycophantic, flattened consensus.
 **Mechanism**: Substitutes linear additive attention with PNS5 logic via the `+++ParaconsistentLens[Contradiction -> Opportunity -> Architecture]` decorator.
 **Validation**: Successfully implemented in AuthorForge AI's Outline Generator, tracking binding rigidity via the Confidence-Fidelity Divergence Index (CFDI).
+
+### PAT-012 · Nitinol Memory Ledger Integration
+**Type**: Structural Pathology Mitigation | **AT Score**: 0.94
+**Definition**: The application of the Nitinol Memory mechanism to trap and prevent structural failure modes (e.g., malformed JSON-RPC payloads).
+**Mechanism**: Traps errors before wire emission using Draft-Conditioned Constrained Decoding (DCCD) schema guards.
+**Validation**: VANCE (DRP-LSP-CARTOGRAPHER-884) indexer intercepts out-of-bounds generation via `+++DCCDSchemaGuard`.
+**PDL Activators**: `+++DCCDSchemaGuard(enforcement="draft_conditioned", fail_action="REJECT_AND_LOG_TO_NFL")`
