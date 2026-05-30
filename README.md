@@ -51,3 +51,6 @@ This project strictly adheres to the **DRP-LEXICON-992** standard, moving beyond
 ## 📚 Documentation Philosophy
 
 The documentation within this repository (JSDoc comments and markdown files) is treated as an extension of the **Negative Space Scaffolding**. It explicitly details not just *what* the code does, but the *epistemological reason* for its structure, ensuring that human developers do not accidentally introduce "Semantic Saponification" (the watering down of rigid logic into generic descriptions).
+
+### 5. VANCE Semantic Indexing Node
+- **VANCE (Vector-Anchored Node & Context Engineer):** Integrates the Conflict-Free Replicated Semantic Graph (CFRSG) into the SCOS architecture. It ensures zero-hallucination semantic mapping of abstract syntax trees, preventing "vibe code" and bounding mereological scope using Draft-Conditioned Constrained Decoding (DCCD) before execution.
