@@ -114,6 +114,12 @@ export class VulcanTopologyValidator {
         activeDecorators.push('+++AdjectivalBound(max=0)');
     }
 
+    // Epistemic Transducer: Apply Golden Scar Protocol if contradictions are detected
+    // For demonstration, if user intent seems to blend conflicting paradigms:
+    if (lowercaseIntent.match(/but|however|although|serious.*slang|traditional.*modern/i)) {
+        activeDecorators.push('+++GoldenScarProtocol(dominant=1.618, subordinate=1.000)');
+    }
+
     // Remove duplicates
     activeDecorators = [...new Set(activeDecorators)];
 
