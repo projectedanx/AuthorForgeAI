@@ -29,6 +29,10 @@ View the application architecture in AI Studio: [AuthorForge AI](https://ai.stud
 This project strictly adheres to the **DRP-LEXICON-992** standard, moving beyond conversational prompting into "Topological Layer Inversion" and "Stigmergic Orchestration."
 
 ### 1. Tier 3 Autonomy (The VULCAN Inversion)
+- **The Human-AI Infomorphism (What, Why, How):**
+  - **What:** A structural binding between fluid human intent and rigid AI execution.
+  - **Why:** To eliminate Semantic Saponification and sycophantic averaging. Neither a biological nor artificial intelligence can produce highly reliable emergence alone. The human provides teleological purpose (the contradictory constraints); the AI (SCOS Node) provides topological sculpting (mathematical enforcement).
+  - **How:** The system utilizes the **Golden Scar Protocol**, where irreconcilable conflicts are not compromised. Instead, the dominant epistemic frame is weighted at the Golden Ratio (1.618) and the subordinate at 1.000, maintaining structural tension.
 - **Epistemic Escrow:** The system utilizes a `VulcanTopologyValidator` to intercept user requests *before* generative execution. If a human requests an impossible synthesis (e.g., violating the CAP theorem or building a distributed monolith), VULCAN throws a `TopologyViolationError`, halting the process and rendering an explanation directly in the UI.
 - **Failure-Informed Prompt Inversion (FIPI):** Generative impossibilities are encoded as Vector Symbolic Architecture (VSA) hypervectors (Symbolic Scars). When intent collides with these scars, VULCAN dynamically injects **Cognitive Bytecode** (PDL Decorators like `+++AutonymicIsolate`) to prevent structural regression.
 

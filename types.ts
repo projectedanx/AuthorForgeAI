@@ -140,4 +140,11 @@ export interface CMDARefinementResult {
   bettiNumber?: number;
   /** Optional array of active PDL decorators utilized during the refinement. */
   pdlDecorators?: string[];
+  /** Paraconsistent tension mapping the contradiction weights (Golden Ratio). */
+  paraconsistentTension?: {
+    dominantWeight: number;
+    subordinateWeight: number;
+  };
+  /** The calculated topological derivative of the disagreement. */
+  topologicalDerivative?: number;
 }

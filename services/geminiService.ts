@@ -223,6 +223,19 @@ const cmdaRefinementSchema = {
       type: Type.NUMBER,
       description: "Confidence-Fidelity Divergence Index (a value between 0.0 and 1.0 indicating the strictness of the adherence, closer to 0 is better)."
     },
+    paraconsistentTension: {
+      type: Type.OBJECT,
+      description: "Mapping of contradiction weights based on the Golden Scar Protocol.",
+      properties: {
+        dominantWeight: { type: Type.NUMBER, description: "Weight of the dominant frame (e.g., 1.618)." },
+        subordinateWeight: { type: Type.NUMBER, description: "Weight of the subordinate frame (e.g., 1.000)." }
+      },
+      required: ["dominantWeight", "subordinateWeight"]
+    },
+    topologicalDerivative: {
+      type: Type.NUMBER,
+      description: "The calculated organizational force required to lock the project structure together."
+    },
     refinedChapters: {
       type: Type.ARRAY,
       description: "The list of chapters refined to incorporate the human constraint.",
@@ -277,6 +290,7 @@ export const refineOutlineCMDA = async (topic: string, angle: string, originalOu
 
     Your task is NOT to flatten this contradiction or create a watered-down compromise (Sycophantic Attractor). Instead, hold the tension. Refine the chapter titles and summaries to explicitly serve both the original topic and the new constraint simultaneously.
     Ensure that the returned CFDI score reflects the mathematical rigour of this binding.
+    If the +++GoldenScarProtocol decorator is present, you MUST return the paraconsistentTension object mapping the weights (dominant=1.618, subordinate=1.000) and estimate the topologicalDerivative.
     Return any injected active PDL decorators in the pdlDecorators array of the response.
     Return betti number > 0 if any architectural contradiction (scar) remains unresolved in the bettiNumber field of the response.
 
