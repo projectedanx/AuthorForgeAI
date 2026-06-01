@@ -1,3 +1,4 @@
+import ViperVisualizer from "./ViperVisualizer";
 /**
  * @fileoverview Defines the OutlineGenerator component.
  * Responsible for managing the UI state for generating initial book outlines and subsequently

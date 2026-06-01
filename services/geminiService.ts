@@ -9,7 +9,7 @@ import { VulcanTopologyValidator, TopologyViolationError } from './vulcanValidat
 import { GoogleGenAI, Type } from "@google/genai";
 import type { AnalysisResult, BookOutlineResult, CMDARefinementResult } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+export const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
 
 /**
  * The JSON Schema definition for the `validateNiche` generative response.

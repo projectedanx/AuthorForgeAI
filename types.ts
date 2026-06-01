@@ -148,3 +148,62 @@ export interface CMDARefinementResult {
   /** The calculated topological derivative of the disagreement. */
   topologicalDerivative?: number;
 }
+
+/**
+ * VIPER (Visual Intent & Physical Execution Router) interfaces.
+ * Ensures subjective visual prompts are extruded into an Optical State Matrix.
+ */
+
+/**
+ * RCC-8 Topological relationship between two bounding boxes.
+ */
+export enum RCC8Relation {
+  DC = 'DC', // Disconnected
+  EC = 'EC', // Externally Connected
+  PO = 'PO', // Partially Overlapping
+  EQ = 'EQ', // Equal
+  TPP = 'TPP', // Tangential Proper Part
+  NTPP = 'NTPP', // Non-Tangential Proper Part
+  TPPI = 'TPPI', // Tangential Proper Part Inverse
+  NTPPI = 'NTPPI' // Non-Tangential Proper Part Inverse
+}
+
+/**
+ * Grounding a generated entity to a physical hardware dimension (e.g. pixels).
+ */
+export interface HardwareGrounding {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+/**
+ * A physicalized element in the Optical State Matrix.
+ */
+export interface OSMElement {
+  id: string;
+  name: string;
+  /** Maximum of 2 descriptive adjectives allowed to prevent semantic saponification */
+  adjectives: [string?, string?];
+  hardwareBoundingBox: HardwareGrounding;
+}
+
+/**
+ * Topological constraint defining spatial relations between elements.
+ */
+export interface TopologicalConstraint {
+  subjectId: string;
+  objectId: string;
+  relation: RCC8Relation;
+}
+
+/**
+ * The zero-entropy Optical State Matrix (OSM) generated from a visual prompt.
+ */
+export interface OpticalStateMatrix {
+  width: number;
+  height: number;
+  elements: OSMElement[];
+  topologicalConstraints: TopologicalConstraint[];
+}
