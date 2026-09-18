@@ -107,3 +107,13 @@ Earlier work on VULCAN demonstrated that paraconsistent logic is essential. Atte
 *   **Action:** Implemented the Pluriversal Feature Discovery Agent (PFDA) guided by the Antifragile Epistemic Weaver (AEW) persona. Introduced SMLR Dynamics (Constitutional Austenite and Martensite) to manage systemic state.
 *   **Learning:** By enforcing RCC-8 spatial calculus and Z-Axis Inference (Phantom Dimensions), the agent successfully holds contradictions in a Paraconsistent State. VW3 Dissonance proved highly effective at generating structural bridges. Chain-of-Code (CoC) Enactment Simulations provided necessary mathematical proofs for these paraconsistent hypotheses, ensuring that generating "out-of-bounds" features didn't break core constraints.
 *   **Adoption:** The PFDA is now the standard for cross-domain codebase feature generation. Its structural schemas (GoTTopology, CoCEnactmentSimulation) are enshrined in `types.ts` and `ADR-16`.
+
+## Lesson 004: The Causal Intent Gap & Aurelius Orchestration
+**Context:** Traditional Prompt Engineering relies heavily on probabilistic correlation, attempting to coax desired outputs via subjective linguistic tuning (e.g., "make it dramatic, highly detailed"). This results in a "Causal Intent Gap" where the user lacks structural, deterministic control over the mathematical latent space.
+
+**Architectural Shift (Project Aurelius):**
+*   We ceased attempting to describe spatial relationships using subjective adjectives and shifted to programming **Phantom Dimensions**. By defining specific targets (e.g., negative Gauss Curvature), we bypass semantic interpretation and directly sculpt the non-Euclidean manifold.
+*   We integrated the **Plausibility Oracle** to act as a grounded counter-weight to generative hallucination. By demanding simulated PSNR/UIQI metrics derived from PBR and ray-tracing logic, we force the LLM to justify its physical rendering choices deterministically.
+*   The **Pluriversal Knowledge Capsule** was introduced as mandatory Negative Space Scaffolding for these outputs, ensuring that all generative acts are packaged with their thermodynamic (Hickam) orientation, explicit paraconsistent tensions, and quantitative bias auditing (Provenance Trail).
+
+**Key Takeaway:** Ethical prompting and structural control are not semantic constraints; they are topological constraints. Semantic Drift can only be managed by dynamically re-weighting historical training data influence at the point of inference via the Provenance Trail.
