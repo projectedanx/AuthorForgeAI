@@ -16,9 +16,9 @@ import OutlineGenerator from './OutlineGenerator';
 
 /**
  * Functional component managing the state and UI for validating an initial book topic/niche.
- * Integrates directly with the `validateNiche` service, which applies Failure-Informed Prompt Inversion (FIPI).
+ * Integrates directly with the validateNiche service, which applies Failure-Informed Prompt Inversion (FIPI).
  *
- * @returns {React.ReactElement} The NicheValidator interface, including dynamic rendering of analysis results.
+ * @returns {React.ReactElement} The NicheValidator interface.
  */
 const NicheValidator: React.FC = () => {
   const [topic, setTopic] = useState<string>('');
@@ -31,9 +31,13 @@ const NicheValidator: React.FC = () => {
   /**
    * Orchestrates the market analysis process.
    * Transmits the high-entropy user input to the backend, updating UI state based on
-   * structural validation (VULCAN) or generative success.
+   * structural validation (VULCAN) or generative success, utilizing Failure-Informed Prompt Inversion (FIPI).
+   *
+   * @async
+   * @function handleAnalyze
+   * @returns {Promise<void>}
    */
-    const handleAnalyze = useCallback(async () => {
+  const handleAnalyze = useCallback(async () => {
     if (!topic.trim()) {
       setError('Please enter a topic or idea.');
       return;

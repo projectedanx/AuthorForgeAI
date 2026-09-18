@@ -194,3 +194,34 @@ sequenceDiagram
     *   **Resolution:** Implemented `StrategicIntegrationManager` utilizing the Zachman Framework and Paraconsistent Logic. It explicitly calculates the `topologicalDerivative` to lock contradictory states together without sycophantic averaging.
 
 ---
+
+## 🚀 Setup Instructions
+
+1.  **Clone the Repository**:
+    ```bash
+    git clone <repository_url>
+    cd authorforge-ai
+    ```
+2.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Environment Variables**:
+    Create a `.env.local` file in the root directory based on `.env.example`:
+    ```env
+    VITE_API_KEY=your_gemini_api_key
+    ```
+4.  **Run Development Server**:
+    ```bash
+    npm run dev &
+    ```
+
+## 📖 Usage Guide
+
+*   **Niche & Trend Validator**: Enter a high-level book concept. The AI will output structured JSON outlining profitable niches, trending topics, and unique angles. If an architectural impossibility is requested, VULCAN will trigger an Epistemic Escrow.
+*   **Strategic Integration Manager**: Input deterministic system requirements alongside contradictory human constraints. The PM Persona will generate a Zachman Framework operational workflow, demonstrating Paraconsistent Logic.
+*   **V.I.P.E.R. Visualizer**: Input subjective visual descriptions to observe how the V.I.P.E.R. service extrudes them into rigid Optical State Matrices (OSM) mapped with RCC-8 topology.
+
+## 🎯 Purpose
+
+The primary purpose of AuthorForge AI is not to be a standard, sycophantic chatbot, but to serve as a **Sovereign Cognitive Operating System (SCOS) node**. It explicitly demonstrates **Topological Layer Inversion** and the **Golden Scar Protocol**, forcing chaotic human intent into deterministic, mathematically verifiable structures (Negative Space Scaffolding) before generative execution.

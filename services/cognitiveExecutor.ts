@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Defines the cognitive execution service.
+ * Centralizes API interactions and Epistemic Escrow logic to reduce complexity.
+ */
+
 import { GoogleGenAI } from "@google/genai";
 import { TopologyViolationError } from "./vulcanValidator";
 
