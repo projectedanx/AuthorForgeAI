@@ -114,5 +114,5 @@ export const generateStrategicWorkflow = async (
     Provide your response strictly in the JSON format matching the provided schema.
   `;
 
-  return await executeGenerativeTask<StrategicIntegrationResult>(prompt, strategicIntegrationSchema, 0.7);
+  return await executeGenerativeTask<StrategicIntegrationResult>(prompt, strategicIntegrationSchema);
 };
