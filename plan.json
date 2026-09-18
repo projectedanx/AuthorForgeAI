@@ -1,0 +1,12 @@
+{
+"outcome_type": "ACCEPTED_PLAN",
+"target_module": "services/geminiService.ts",
+"initial_cognitive_complexity_score": 48,
+"hypothesis_summary": "Abstract the GoogleGenAI initialization, prompt generation, error handling (specifically TopologyViolationError propagation), and JSON schema definitions into a single generic Cognitive Executor function. This enforces a stricter boundary (Negative Space Scaffolding) around the AI invocation, reducing cognitive complexity and centralizing the FIPI/Epistemic Escrow logic.",
+"ACU_robustness_score": 0.88,
+"tension_metric": {
+"novelty_score": 0.75,
+"grounding_score": 0.95
+},
+"justification_or_plan": "1. Create `services/cognitiveExecutor.ts` to host `executeGenerativeTask<T>`. 2. Move `GoogleGenAI` initialization and the standardized `try/catch` block handling `TopologyViolationError` into this centralized function. 3. Refactor `services/geminiService.ts` to replace repetitive API calls with `executeGenerativeTask<T>`. 4. Refactor `services/pmPersonaService.ts` to utilize the new executor. 5. Run `npx vitest run` to ensure the 'Fix Until Green' autonomic loop is satisfied."
+}

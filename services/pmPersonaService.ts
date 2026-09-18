@@ -1,10 +1,7 @@
-import { GoogleGenAI, Type } from '@google/genai';
-import { VulcanTopologyValidator, TopologyViolationError } from './vulcanValidator';
+import { Type } from '@google/genai';
+import { VulcanTopologyValidator } from './vulcanValidator';
 import type { StrategicIntegrationResult } from '../types';
-
-// Initialize the Gemini SDK
-const apiKey = import.meta.env?.VITE_API_KEY || import.meta.env?.API_KEY || 'mock-key-for-tests';
-const ai = new GoogleGenAI({ apiKey });
+import { executeGenerativeTask } from './cognitiveExecutor';
 
 /**
  * The JSON Schema definition for the `StrategicIntegrationResult` generative response.
@@ -103,25 +100,5 @@ export const generateStrategicWorkflow = async (
     Provide your response strictly in the JSON format matching the provided schema.
   `;
 
-  try {
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-pro",
-      contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: strategicIntegrationSchema,
-        temperature: 0.7,
-      },
-    });
-
-    const jsonString = response.text.trim();
-    const result: StrategicIntegrationResult = JSON.parse(jsonString);
-    return result;
-  } catch (error) {
-    if (error instanceof TopologyViolationError) {
-      throw error;
-    }
-    console.error("Error calling Gemini API:", error);
-    throw new Error("Failed to get analysis from AI. The model may be unable to generate a response for the given topic.");
-  }
+  return await executeGenerativeTask<StrategicIntegrationResult>(prompt, strategicIntegrationSchema, 0.7);
 };

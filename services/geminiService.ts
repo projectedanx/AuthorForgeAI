@@ -1,10 +1,7 @@
-import { GoogleGenAI, Type } from "@google/genai";
-import { VulcanTopologyValidator, TopologyViolationError } from "./vulcanValidator";
+import { Type } from "@google/genai";
+import { VulcanTopologyValidator } from "./vulcanValidator";
 import type { AnalysisResult, BookOutlineResult, CMDARefinementResult } from "../types";
-
-// Initialize the Gemini SDK
-const apiKey = import.meta.env?.VITE_API_KEY || import.meta.env?.API_KEY || 'mock-key-for-tests';
-export const ai = new GoogleGenAI({ apiKey });
+import { executeGenerativeTask } from "./cognitiveExecutor";
 
 /**
  * The JSON Schema definition for the `validateNiche` generative response.
@@ -95,27 +92,7 @@ export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
     Your task is to act as an expert publishing market analyst. Based on real-time market data trends from platforms like Amazon's bestseller lists and Goodreads, provide a detailed analysis. Identify profitable niches, trending topics, highly searched keywords, and unique angles to help the author write a successful book. Your response must be in JSON format matching the provided schema.
   `;
 
-  try {
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-pro",
-      contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: responseSchema,
-        temperature: 0.7,
-      },
-    });
-
-    const jsonString = response.text.trim();
-    const result: AnalysisResult = JSON.parse(jsonString);
-    return result;
-  } catch (error) {
-    if (error instanceof TopologyViolationError) {
-      throw error;
-    }
-    console.error("Error calling Gemini API:", error);
-    throw new Error("Failed to get analysis from AI. The model may be unable to generate a response for the given topic.");
-  }
+  return await executeGenerativeTask<AnalysisResult>(prompt, responseSchema, 0.7);
 };
 
 /**
@@ -185,27 +162,7 @@ export const generateBookOutline = async (topic: string, angle: string): Promise
     Your response must be in JSON format matching the provided schema.
   `;
 
-  try {
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-pro",
-      contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: outlineResponseSchema,
-        temperature: 0.7,
-      },
-    });
-
-    const jsonString = response.text.trim();
-    const result = JSON.parse(jsonString);
-    return result;
-  } catch (error) {
-    if (error instanceof TopologyViolationError) {
-      throw error;
-    }
-    console.error("Error calling Gemini API for outline generation:", error);
-    throw new Error("Failed to generate book outline from AI.");
-  }
+  return await executeGenerativeTask<BookOutlineResult>(prompt, outlineResponseSchema, 0.7);
 };
 
 /**
@@ -298,25 +255,5 @@ export const refineOutlineCMDA = async (topic: string, angle: string, originalOu
     Your response must be in JSON format matching the provided schema.
   `;
 
-  try {
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-pro",
-      contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: cmdaRefinementSchema,
-        temperature: 0.8, // Slightly higher to allow conceptual blending
-      },
-    });
-
-    const jsonString = response.text.trim();
-    const result = JSON.parse(jsonString);
-    return result;
-  } catch (error) {
-    if (error instanceof TopologyViolationError) {
-      throw error;
-    }
-    console.error("Error calling Gemini API for CMDA refinement:", error);
-    throw new Error("Failed to refine outline using CMDA.");
-  }
+  return await executeGenerativeTask<CMDARefinementResult>(prompt, cmdaRefinementSchema, 0.8);
 };
