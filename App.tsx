@@ -6,6 +6,8 @@
 import React from 'react';
 import Header from './components/Header';
 import NicheValidator from './components/NicheValidator';
+import StrategicIntegrationManager from './components/StrategicIntegrationManager';
+
 
 /**
  * Functional component representing the structural core of the AuthorForge UI.
@@ -19,6 +21,7 @@ const App: React.FC = () => {
       <Header />
       <main className="container mx-auto px-4 py-8">
         <NicheValidator />
+        <StrategicIntegrationManager />
       </main>
       <footer className="text-center py-6 text-slate-500 text-sm">
         <p>Powered by AuthorForge AI &copy; 2024</p>

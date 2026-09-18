@@ -207,3 +207,49 @@ export interface OpticalStateMatrix {
   elements: OSMElement[];
   topologicalConstraints: TopologicalConstraint[];
 }
+
+/**
+ * Zachman Framework Structural Schema
+ * Represents the deterministic architectural representation of the system.
+ */
+export interface ZachmanCell {
+  /** The specific question being answered (What, How, Where, Who, When, Why). */
+  interrogative: 'What' | 'How' | 'Where' | 'Who' | 'When' | 'Why';
+  /** The perspective level (e.g., Planner, Owner, Designer, Builder, Subcontractor). */
+  perspective: string;
+  /** The deterministic system artifact resolving the cell. */
+  artifact: string;
+  /** Description or rationalization. */
+  description: string;
+}
+
+/**
+ * The deterministic operational workflow mapped to the Zachman Framework.
+ */
+export interface OperationalWorkflowJSON {
+  /** The cells populated within the framework. */
+  cells: ZachmanCell[];
+}
+
+/**
+ * The result returned by the PM Persona service.
+ */
+export interface StrategicIntegrationResult {
+  /** The operational workflow formatted according to the Zachman schema. */
+  workflow: OperationalWorkflowJSON;
+  /**
+   * A Persona Confidence Score, updating based on recency and quality of signals.
+   * Required by the DRP-SCOS-PERSONA-METROLOGY-2026-v6.1 standard.
+   */
+  personaConfidenceScore: number;
+  /**
+   * The calculated organizational force required to lock the project structure together,
+   * holding contradictions as stable topological states.
+   */
+  topologicalDerivative: number;
+  /** The Paraconsistent tension mapping the contradiction weights (Golden Ratio). */
+  paraconsistentTension: {
+    dominantWeight: number;
+    subordinateWeight: number;
+  };
+}

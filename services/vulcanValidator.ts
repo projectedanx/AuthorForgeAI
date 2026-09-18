@@ -71,6 +71,17 @@ export class VulcanTopologyValidator {
          '+++AutonymicIsolate(forbidden_content=["cap_theorem_violation"])'
       ]
     }
+  ,
+    {
+      scarId: 'SCAR-004',
+      pattern: 'compromise|average out|flatten the contradiction|middle ground',
+      betti1: 1,
+      fipiVector: { dimensions: [1, 1, 1], magnitude: 1.732 },
+      pdlDecorators: [
+        '+++GoldenScarProtocol(dominant=1.618, subordinate=1.000)',
+        '+++AutonymicIsolate(forbidden_content=["compromise", "middle_ground"])'
+      ]
+    }
   ];
 
   /**
