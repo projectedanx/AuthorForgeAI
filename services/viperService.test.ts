@@ -1,15 +1,17 @@
 import { describe, it, expect, vi } from 'vitest';
 import { extrudeOpticalStateMatrix } from './viperService';
 import { RCC8Relation } from '../types';
-import { ai } from './geminiService';
 
-vi.mock('./geminiService', () => ({
-  ai: {
-    models: {
-      generateContent: vi.fn()
+vi.mock('./cognitiveExecutor', () => {
+  return {
+    ai: {
+      models: {
+        generateContent: vi.fn()
+      }
     }
-  }
-}));
+  };
+});
+import { ai } from './cognitiveExecutor';
 
 describe('VIPER Service: Analytical-to-Generative Inversion', () => {
   it('extrudes a subjective human prompt into a rigid Optical State Matrix', async () => {

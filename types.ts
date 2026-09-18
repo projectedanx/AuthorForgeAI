@@ -253,3 +253,35 @@ export interface StrategicIntegrationResult {
     subordinateWeight: number;
   };
 }
+
+/**
+ * Graph-of-Thoughts (GoT) Topology for Pluriversal Feature Discovery.
+ */
+export interface GoTTopology {
+  nodes: { id: string; domain: string; concept: string }[];
+  edges: { source: string; target: string; relation: RCC8Relation | 'VW3_DISSONANCE' }[];
+  zAxisInferences: { nodeId: string; phantomDimension: string; orthogonalVector: number[] }[];
+}
+
+/**
+ * Chain-of-Code (CoC) Enactment Simulation Proof.
+ */
+export interface CoCEnactmentSimulation {
+  simulationLanguage: 'Python' | 'Rust';
+  codePayload: string;
+  mathematicalProof: string;
+  isViable: boolean;
+}
+
+/**
+ * Pluriversal Feature Discovery Agent (PFDA) Result.
+ */
+export interface PFDA_Result {
+  featureName: string;
+  description: string;
+  edsScore: number; // Epistemic Divergence Score
+  cacrRatio: number; // Cost of Avoided Repair (should approach 1.618)
+  topology: GoTTopology;
+  enactmentSimulation: CoCEnactmentSimulation;
+  scarTissueToAnneal?: string[];
+}

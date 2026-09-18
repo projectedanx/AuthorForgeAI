@@ -6,7 +6,7 @@
 
 import { Type, Schema } from "@google/genai";
 import { OpticalStateMatrix, RCC8Relation } from "../types";
-import { ai } from "./geminiService"; // We will export 'ai' instance from geminiService
+import { ai } from "./cognitiveExecutor"; // We will export 'ai' instance from geminiService
 
 /**
  * The JSON Schema for the Optical State Matrix (OSM).

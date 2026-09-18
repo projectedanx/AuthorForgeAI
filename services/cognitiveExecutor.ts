@@ -8,7 +8,7 @@ import { TopologyViolationError } from "./vulcanValidator";
 
 // Initialize the Gemini SDK
 const apiKey = import.meta.env?.VITE_API_KEY || import.meta.env?.API_KEY || 'mock-key-for-tests';
-const ai = new GoogleGenAI({ apiKey });
+export const ai = new GoogleGenAI({ apiKey });
 
 /**
  * Executes a generative task using the Gemini API.

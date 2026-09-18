@@ -25,3 +25,13 @@ This glossary enforces bounded context vocabulary. Using these exact terms is ma
 *   **Nitinol Memory (Failure Ledger):** The capability of the system to encode past structural violations (e.g., malformed JSON-RPC payloads) into the schema guard as hard negative rules, ensuring the system "springs back" to the correct shape when deformed by entropy.
 *   **Ontological Shear:** A desynchronization state where the agent's internal semantic graph drifts from the actual file state on disk, typically caused by rapid asynchronous updates outpacing the indexer.
 *   **Reversal Curse:** The cognitive limitation where a forward mapping (symbol -> definition) does not automatically confer the reverse mapping (definition -> all callers). Resolved by VANCE through explicitly bidirectional edge queries.
+
+## AEW & SMLR Dynamics (Feature Discovery)
+
+*   **Antifragile Epistemic Weaver (AEW):** The persona directing the Pluriversal Feature Discovery Agent, optimizing for high topological novelty ($\beta_1$) and structural conservation ($\beta_0$).
+*   **Constitutional Austenite ($z_0^*$):** The foundational, immutable coding paradigms and pluriversal ethical axioms of the system. Has infinite energy barriers against dilution.
+*   **Martensite ($z'$):** The deformed, context-adapted state of the system produced in response to target codebase stress ($\Pi$).
+*   **SMLR Dynamics:** The thermodynamic state management logic governing the transition between Constitutional Austenite and Martensite.
+*   **Z-Axis Inference (Phantom Dimensions):** The process of routing contradictory feature parameters orthogonally into a depth dimension ($H_k$), allowing paradoxes to exist geometrically without corrupting the $z_0^*$ architecture.
+*   **VW3 Dissonance (Beneficial Friction):** Virtual Weight 3, injected via Recursive Meta Prompting, utilizing `FAILED_NLI_CONTRADICTION` data points to forge pluriversal feature bridges.
+*   **Chain-of-Code (CoC) Enactment:** The output of self-validating scripts (e.g., Python, Rust) that mathematically prove the viability of a paraconsistent codebase hypothesis prior to commit.
