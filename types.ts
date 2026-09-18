@@ -285,3 +285,89 @@ export interface PFDA_Result {
   enactmentSimulation: CoCEnactmentSimulation;
   scarTissueToAnneal?: string[];
 }
+
+/**
+ * ============================================================================
+ * AURELIUS META-ARCHITECT INTELLIGENCE ENTITIES
+ * ============================================================================
+ */
+
+/**
+ * Represents a dynamically modulated Phantom Dimension for navigating non-Euclidean
+ * latent spaces (e.g., Hyperbolic, Spherical geometries).
+ */
+export interface PhantomDimension {
+  /** The geometric topology targeted (e.g., "hyperbolic_dodecahedron_space"). */
+  geometryTarget: string;
+  /** Granular parameters injected to warp the latent manifold. */
+  manifoldParameters: Record<string, number>;
+  /** The calculated Gauss Curvature of the induced space. */
+  gaussCurvature: number;
+}
+
+/**
+ * Tracks the quantitative influence of historical training data on the generated output,
+ * allowing for dynamic re-weighting of Semantic Drift.
+ */
+export interface ProvenanceTrail {
+  /** Identifying hash or descriptor of the training data sample/cluster. */
+  trainingClusterId: string;
+  /** Quantitative measure of this cluster's influence on the current generation. */
+  influenceWeight: number;
+  /** Active de-emphasis or amplification factor applied by the Plausibility Oracle. */
+  attributionAdjustment: number;
+}
+
+/**
+ * Metrics fed back from real-time differentiable ray tracing and PBR simulations.
+ */
+export interface PlausibilityOracleMetrics {
+  /** Universal Image Quality Index, measuring structural fidelity. */
+  uiqiScore: number;
+  /** Peak Signal-to-Noise Ratio representing physical adherence to lighting/geometry. */
+  psnrPhysicalAdherence: number;
+  /** The generated Provenance Trail for ethical and bias auditing. */
+  provenance: ProvenanceTrail[];
+}
+
+/**
+ * Ensures outputs target physical spectral reflectance properties and Quantum Dot color gamuts.
+ */
+export interface MultispectralFidelity {
+  /** Validates targeting of non-RGB, physically verifiable spectra. */
+  spectralReflectanceOptimized: boolean;
+  /** Ensures generation maximizes purer monochromatic red, green, and blue light targets. */
+  quantumDotTargeting: boolean;
+}
+
+/**
+ * The unified output artifact from the Aurelius Agentic Workflow Catalyst.
+ */
+export interface PluriversalKnowledgeCapsule {
+  /** The Hickam Orientation block, rejecting Occam's Razor for multi-causal structures. */
+  hickamOrientation: string;
+  /** The delta map holding the contradictions in paraconsistent tension. */
+  contrastiveDelta: Record<string, any>;
+  /** Hardware and structural grounding metrics. */
+  martensiteMetrics: Record<string, number>;
+  /** The actual requested output payload (e.g., the generated prompt or scene description). */
+  operationalPayload: string;
+  /** The configured phantom dimensions. */
+  phantomDimensions: PhantomDimension[];
+  /** Oracle feedback on physical and geometric validity. */
+  oracleFeedback: PlausibilityOracleMetrics;
+  /** Validation of cross-modal spectral targets. */
+  multispectralFidelity: MultispectralFidelity;
+}
+
+/**
+ * The configuration for a Unified Meta-Prompt to be executed by Aurelius.
+ */
+export interface UnifiedMetaPrompt {
+  /** High-level scene description. */
+  baseIntent: string;
+  /** The target non-Euclidean geometry. */
+  targetGeometry: string;
+  /** Constraints for physical rendering and lighting. */
+  physicalConstraints: string;
+}

@@ -35,3 +35,11 @@ This glossary enforces bounded context vocabulary. Using these exact terms is ma
 *   **Z-Axis Inference (Phantom Dimensions):** The process of routing contradictory feature parameters orthogonally into a depth dimension ($H_k$), allowing paradoxes to exist geometrically without corrupting the $z_0^*$ architecture.
 *   **VW3 Dissonance (Beneficial Friction):** Virtual Weight 3, injected via Recursive Meta Prompting, utilizing `FAILED_NLI_CONTRADICTION` data points to forge pluriversal feature bridges.
 *   **Chain-of-Code (CoC) Enactment:** The output of self-validating scripts (e.g., Python, Rust) that mathematically prove the viability of a paraconsistent codebase hypothesis prior to commit.
+
+## META_ARCHITECT_INTELLIGENCE_PROJECT_AURELIUS (Cross-Modal Fusion)
+
+*   **Phantom Dimensions:** Explicitly modulated coordinate axes within the latent space, engineered to impose non-Euclidean geometric logic (e.g., Hyperbolic or Spherical curvature) on generative output, preventing standard probabilistic collapse.
+*   **Plausibility Oracle:** An agentic feedback loop incorporating simulated differentiable ray tracing and Physically Based Rendering (PBR) to provide deterministic ground-truth physical metrics (UIQI, PSNR) against generative output.
+*   **Provenance Trail:** A quantifiable tracking system that measures the explicit influence of specific historical training data clusters on current generation, enabling the dynamic re-weighting or mitigation of 'Semantic Drift' and bias.
+*   **Multispectral Fidelity (MSI):** The generation of physical outputs targeting non-RGB spectral reflectance properties, utilizing Quantum Dot logic for purer monochromatic rendering to maximize physical realism.
+*   **Pluriversal Knowledge Capsule:** The mandatory output wrapper for all unified meta-prompts, enforcing the presence of Hickam_Orientation, Contrastive_Delta, and structural/hardware provenance metrics.

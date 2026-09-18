@@ -225,3 +225,12 @@ sequenceDiagram
 ## 🎯 Purpose
 
 The primary purpose of AuthorForge AI is not to be a standard, sycophantic chatbot, but to serve as a **Sovereign Cognitive Operating System (SCOS) node**. It explicitly demonstrates **Topological Layer Inversion** and the **Golden Scar Protocol**, forcing chaotic human intent into deterministic, mathematically verifiable structures (Negative Space Scaffolding) before generative execution.
+
+---
+
+## TIER 6: Cross-Modal Perceptual Fusion (Aurelius Node)
+Project Aurelius extends the SCOS architecture by tackling the **Causal Intent Gap**.
+
+*   **Phantom Dimensions:** We enforce non-Euclidean latent space navigation by encoding geometric topologies as explicit PDL decorators, shifting away from probabilistic adjectives toward rigid mathematical sculpting.
+*   **Plausibility Oracle:** The generative synthesis is bound by physical simulation constraints (UIQI, PSNR) acting as a grounding mechanism.
+*   **Provenance Trail Tracking:** Semantic Drift and historical data bias are actively mitigated by dynamically re-weighting cluster influences during generation.

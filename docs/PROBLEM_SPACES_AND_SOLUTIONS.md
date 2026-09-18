@@ -41,3 +41,15 @@ AuthorForge AI is an active Sovereign Cognitive Operating System (SCOS) node. It
 **Solution: Pluriversal Feature Discovery Agent (PFDA) & SMLR Dynamics**
 *   **Mechanism:** Implements the Antifragile Epistemic Weaver (AEW) persona utilizing SMLR Dynamics. The system maintains its rigid baseline as Constitutional Austenite ($z_0^*$) but deforms into Martensite ($z'$) when faced with contradictory domains.
 *   **Execution:** Instead of averaging contradictions, it applies RCC-8 Topological Blending. When domains partially overlap (PO) incompatibly, the system invokes Z-Axis Inference, routing the contradiction orthogonally into a Phantom Dimension. Beneficial Friction is injected via VW3 Dissonance to bridge these gaps. All hypotheses are strictly validated via Chain-of-Code (CoC) enactment simulations.
+
+## 8. Problem: The Causal Intent Gap
+**Definition:** The reliance on probabilistic, associative correlation in standard prompt engineering, leading to a fundamental lack of deterministic control over the spatial and mathematical reality of the generated latent space.
+**Solution: Unified Meta-Prompting API & Phantom Dimensions (Aurelius Node)**
+*   **Mechanism:** Translates subjective spatial requests into explicit, non-Euclidean geometric parameters (Phantom Dimensions) injected directly into the LLM as cognitive bytecode (e.g., `+++PhantomDimension`).
+*   **Execution:** Bypasses linguistic interpretation by forcing the model to align with mathematical manifold topologies (e.g., Gauss Curvature) rather than statistical pixel distributions.
+
+## 9. Problem: Unchecked Semantic Drift & Training Bias Ossification
+**Definition:** Generative outputs defaulting to the most common, sycophantic attractors in their training data, masking original biases and producing ethically or physically ungrounded results.
+**Solution: Plausibility Oracle & Provenance Trails**
+*   **Mechanism:** The Plausibility Oracle enforces a deterministic feedback loop utilizing simulated ray-tracing (PSNR/UIQI). Simultaneously, the Provenance Trail quantifies the weight of historical data clusters on the current generation.
+*   **Execution:** Allows the system to apply `attributionAdjustment` to actively de-emphasize biased or physically inaccurate historical training data in real-time.
