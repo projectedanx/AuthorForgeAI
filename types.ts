@@ -371,3 +371,86 @@ export interface UnifiedMetaPrompt {
   /** Constraints for physical rendering and lighting. */
   physicalConstraints: string;
 }
+
+/**
+ * ============================================================================
+ * GATEWAY & BFF ARCHITECTURAL HARNESS ENTITIES
+ * ============================================================================
+ */
+
+/**
+ * Represents a property in the dependency graph for schema drift detection.
+ */
+export interface SchemaPropertyNode {
+  name: string;
+  type: string;
+  isNullable: boolean;
+  isRequired: boolean;
+  downstreamSource: string;
+}
+
+/**
+ * Evaluates the BFF's ability to gracefully degrade functionality under contract drift.
+ */
+export interface ContractRobustnessIndex {
+  /** The calculated robustness score (0.0 to 1.0) */
+  score: number;
+  /** Active directed dependency graph of properties. */
+  propertyGraph: SchemaPropertyNode[];
+  /** Mutation tests applied and their outcome (e.g. 'Removed field X -> Handled via default') */
+  mutationTestResults: string[];
+  /** Detailed evaluation of the fallback mechanisms. */
+  fallbackEvaluation: string;
+}
+
+/**
+ * Intelligent, adaptive rate-limiting and backpressure policy.
+ */
+export interface AdaptiveRateLimitPolicy {
+  /** Current threshold limit calculated based on downstream health. */
+  dynamicThresholdRequestsPerSecond: number;
+  /** Factors influencing the dynamic threshold (e.g., 'DB Connection Queue > 80%') */
+  telemetryFactors: string[];
+  /** Load shedding policies for high vs low value transactions. */
+  loadSheddingPolicy: {
+    highPriorityStrategy: string;
+    lowPriorityStrategy: string;
+  };
+  /** Configuration for bulkhead isolation to prevent gateway thread exhaustion. */
+  bulkheadConfig: string;
+}
+
+/**
+ * Report on Business Logic Bleed and Single Responsibility Principle (SRP) violations.
+ */
+export interface SRPBleedReport {
+  /** Array of identified business logic elements mis-located in the BFF. */
+  detectedLogicBleed: {
+    calculationOrRule: string;
+    severity: 'LOW' | 'MEDIUM' | 'HIGH';
+    suggestedDownstreamService: string;
+  }[];
+  /** AST-based evidence of state-changing calculations. */
+  astEvidence: string[];
+  /** Automated refactoring recommendations. */
+  refactoringRecommendations: string[];
+  /** Assessment of domain rule duplication. */
+  domainRuleDuplicationStatus: string;
+}
+
+/**
+ * Comprehensive analysis combining the three structural probes.
+ */
+export interface GatewayArchitectAnalysisResult {
+  schemaRobustness: ContractRobustnessIndex;
+  adaptiveBackpressure: AdaptiveRateLimitPolicy;
+  srpCompliance: SRPBleedReport;
+  /**
+   * The Paraconsistent tension mapping the contradiction weights (Golden Ratio).
+   * Maps the tension between Operational Overhead vs. Team Autonomy.
+   */
+  paraconsistentTension: {
+    dominantWeight: number; // e.g. 1.618 for Autonomy (BFF)
+    subordinateWeight: number; // e.g. 1.000 for Overhead penalty
+  };
+}
