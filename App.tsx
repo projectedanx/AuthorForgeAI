@@ -8,6 +8,8 @@ import Header from './components/Header';
 import NicheValidator from './components/NicheValidator';
 import StrategicIntegrationManager from './components/StrategicIntegrationManager';
 import GatewayArchitectAnalyzer from './components/GatewayArchitectAnalyzer';
+import { QEDInterface } from './components/QEDInterface';
+
 
 
 /**
@@ -22,7 +24,8 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-slate-900 text-slate-200 font-sans">
       <Header />
       <main className="container mx-auto px-4 py-8">
-        <GatewayArchitectAnalyzer />
+                <GatewayArchitectAnalyzer />
+        <div className="my-8"><QEDInterface /></div>
         <NicheValidator />
         <StrategicIntegrationManager />
       </main>

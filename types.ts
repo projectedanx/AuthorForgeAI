@@ -454,3 +454,49 @@ export interface GatewayArchitectAnalysisResult {
     subordinateWeight: number; // e.g. 1.000 for Overhead penalty
   };
 }
+
+/**
+ * ============================================================================
+ * QUALITATIVE EXPERIENCE DATABASE (QED) ENTITIES
+ * ============================================================================
+ */
+
+export interface QualitativePayload {
+  experience_type: 'Direct_Trial' | 'Failure_Incident' | 'Socratic_Review';
+  raw_observation: string;
+  counterfactual_variance: string;
+}
+
+export interface SensoryCausalIndicators {
+  causal_perturbation_index: number; // 0 to 10
+  structural_roughness: number; // 0 to 1
+}
+
+export interface CryptographicProvenance {
+  agent_did: string;
+  verifiable_signature: string;
+}
+
+/**
+ * Minimal Explainability Metadata Schema (MEMS) for Qualitative Ingestion
+ */
+export interface QualitativeExperienceNode {
+  node_id: string; // Pattern: ^QEN-{8}-[a-f0-9]{4}$
+  temporal_anchor: string; // date-time format
+  qualitative_payload: QualitativePayload;
+  sensory_causal_indicators: SensoryCausalIndicators;
+  ontological_alignments: string[];
+  cryptographic_provenance: CryptographicProvenance;
+}
+
+/**
+ * Results from the Semantic Drift Monitor Agent (SDMA)
+ */
+export interface RetrievalAuditResult {
+  semanticDriftScore: number; // SDS
+  confidenceFidelityDivergence: number; // CFD
+  culturalFidelityIndex: number; // CFI
+  westernGazeDominanceScore: number; // WGDS
+  epistemicEscrowTriggered: boolean;
+  escrowReason?: string;
+}
