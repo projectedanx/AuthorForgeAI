@@ -1,19 +1,13 @@
-/**
- * @fileoverview The primary integration layer with the Google Gemini API.
- * This service handles the generative execution while strictly adhering to the topological constraints
- * (Cognitive Bytecode / PDL Decorators) dynamically provided by the VULCAN Validator.
- */
-
-import { VulcanTopologyValidator, TopologyViolationError } from './vulcanValidator';
-
 import { GoogleGenAI, Type } from "@google/genai";
-import type { AnalysisResult, BookOutlineResult, CMDARefinementResult } from '../types';
+import { VulcanTopologyValidator, TopologyViolationError } from "./vulcanValidator";
+import type { AnalysisResult, BookOutlineResult, CMDARefinementResult } from "../types";
 
-export const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+// Initialize the Gemini SDK
+const apiKey = import.meta.env?.VITE_API_KEY || import.meta.env?.API_KEY || 'mock-key-for-tests';
+export const ai = new GoogleGenAI({ apiKey });
 
 /**
  * The JSON Schema definition for the `validateNiche` generative response.
- * Used to enforce Draft-Conditioned Constrained Decoding (DCCD) on the LLM output.
  *
  * @constant
  */
@@ -22,48 +16,48 @@ const responseSchema = {
   properties: {
     profitableNiches: {
       type: Type.ARRAY,
-      description: "A list of profitable niches related to the user's topic.",
+      description: "A list of identified profitable niches.",
       items: {
         type: Type.OBJECT,
         properties: {
-          niche: { type: Type.STRING, description: "Name of the niche." },
-          description: { type: Type.STRING, description: "Why this niche is profitable and relevant." }
+          niche: { type: Type.STRING, description: "The name of the niche." },
+          description: { type: Type.STRING, description: "Why it is profitable." }
         },
         required: ["niche", "description"]
       }
     },
     trendingTopics: {
       type: Type.ARRAY,
-      description: "A list of trending topics within the identified niches.",
+      description: "A list of current trending topics.",
       items: {
         type: Type.OBJECT,
         properties: {
-          trend: { type: Type.STRING, description: "The specific trending topic." },
-          reasoning: { type: Type.STRING, description: "Evidence or reason for this trend (e.g., recent news, search data)." }
+          trend: { type: Type.STRING, description: "The trending topic." },
+          reasoning: { type: Type.STRING, description: "Why it is trending." }
         },
         required: ["trend", "reasoning"]
       }
     },
     keywords: {
       type: Type.ARRAY,
-      description: "A list of highly searched keywords for platforms like Amazon KDP and Google.",
+      description: "A list of high-value keywords.",
       items: {
         type: Type.OBJECT,
         properties: {
-          keyword: { type: Type.STRING, description: "The search keyword or phrase." },
-          platform: { type: Type.STRING, description: "The platform where this keyword is popular (e.g., 'Amazon KDP', 'Google')." }
+          keyword: { type: Type.STRING, description: "The keyword string." },
+          platform: { type: Type.STRING, description: "The platform it performs best on." }
         },
         required: ["keyword", "platform"]
       }
     },
     uniqueAngles: {
       type: Type.ARRAY,
-      description: "A list of unique angles or content gaps the author can fill.",
+      description: "A list of unique angles to approach the topic.",
       items: {
         type: Type.OBJECT,
         properties: {
-          angle: { type: Type.STRING, description: "The unique angle or perspective." },
-          strategy: { type: Type.STRING, description: "How to approach this angle to stand out from competitors." }
+          angle: { type: Type.STRING, description: "The specific angle." },
+          strategy: { type: Type.STRING, description: "How to execute the strategy." }
         },
         required: ["angle", "strategy"]
       }
@@ -73,17 +67,18 @@ const responseSchema = {
 };
 
 /**
- * Validates a user's book idea/topic against market trends.
+ * Orchestrates the generative market analysis while enforcing strict topological constraints.
  *
- * This function first passes the topic through the `VulcanTopologyValidator` to retrieve any necessary
- * PDL decorators (Cognitive Bytecode). It then constructs a prompt injecting these constraints and calls
- * the Gemini API, enforcing the structured `responseSchema`.
+ * This function intercepts the human's high-entropy topic via the `VulcanTopologyValidator`.
+ * If VULCAN detects an impossible synthesis (e.g., requesting a CAP theorem violation),
+ * it throws a `TopologyViolationError`. Otherwise, it injects the necessary Cognitive Bytecode
+ * (PDL Decorators) into the prompt to ensure the output adheres to the structural schema.
  *
  * @async
  * @function validateNiche
- * @param {string} topic - The user's proposed book topic or area of expertise.
- * @returns {Promise<AnalysisResult>} A promise resolving to the structured market analysis.
- * @throws {Error} Throws an error if the API call fails or if VULCAN triggers an Epistemic Escrow (TopologyViolationError).
+ * @param {string} topic - The raw, unstructured topic provided by the user.
+ * @returns {Promise<AnalysisResult>} A promise resolving to the fully structured, schema-compliant market analysis.
+ * @throws {Error} Throws a standard error if the API call fails, or a `TopologyViolationError` if VULCAN triggers an Epistemic Escrow.
  */
 export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
   const { pdlDecorators } = VulcanTopologyValidator.assessIntentTopology(topic);
@@ -115,6 +110,9 @@ export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
     const result: AnalysisResult = JSON.parse(jsonString);
     return result;
   } catch (error) {
+    if (error instanceof TopologyViolationError) {
+      throw error;
+    }
     console.error("Error calling Gemini API:", error);
     throw new Error("Failed to get analysis from AI. The model may be unable to generate a response for the given topic.");
   }
@@ -202,6 +200,9 @@ export const generateBookOutline = async (topic: string, angle: string): Promise
     const result = JSON.parse(jsonString);
     return result;
   } catch (error) {
+    if (error instanceof TopologyViolationError) {
+      throw error;
+    }
     console.error("Error calling Gemini API for outline generation:", error);
     throw new Error("Failed to generate book outline from AI.");
   }
@@ -312,6 +313,9 @@ export const refineOutlineCMDA = async (topic: string, angle: string, originalOu
     const result = JSON.parse(jsonString);
     return result;
   } catch (error) {
+    if (error instanceof TopologyViolationError) {
+      throw error;
+    }
     console.error("Error calling Gemini API for CMDA refinement:", error);
     throw new Error("Failed to refine outline using CMDA.");
   }
