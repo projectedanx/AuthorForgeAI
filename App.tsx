@@ -12,6 +12,7 @@ import StrategicIntegrationManager from './components/StrategicIntegrationManage
 /**
  * Functional component representing the structural core of the AuthorForge UI.
  * Integrates the branding header and the primary interaction node.
+ * Applies Negative Space Scaffolding around dynamic content.
  *
  * @returns {React.ReactElement} The complete application layout.
  */

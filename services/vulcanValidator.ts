@@ -31,6 +31,7 @@ export class TopologyViolationError extends Error {
 /**
  * The VULCAN Validator acts as a deterministic firewall (Negative Space Scaffolding)
  * against high-entropy, impossible, or pathological human intent.
+ * Employs Failure-Informed Prompt Inversion (FIPI).
  */
 export class VulcanTopologyValidator {
   /**

@@ -1,14 +1,36 @@
+/**
+ * @fileoverview Defines the ViperVisualizer component.
+ * Acts as the UI layer for V.I.P.E.R. (Visual Intent & Physical Execution Router),
+ * translating subjective visual desire into a rigid Optical State Matrix (OSM).
+ */
+
 import React, { useState } from 'react';
 import { OpticalStateMatrix } from '../types';
 import { extrudeOpticalStateMatrix } from '../services/viperService';
 import LoadingSpinner from './LoadingSpinner';
 
+/**
+ * Functional component managing the state and UI for visual extrusion.
+ * Captures subjective human visual prompts and enforces Hardware Forced Physicality
+ * and Spatial Bind (RCC-8) via the underlying V.I.P.E.R. service.
+ *
+ * @returns {React.ReactElement} The ViperVisualizer interface.
+ */
 const ViperVisualizer: React.FC = () => {
   const [visualPrompt, setVisualPrompt] = useState<string>('');
   const [osm, setOsm] = useState<OpticalStateMatrix | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * Orchestrates the extrusion of subjective visual intent into a rigid Optical State Matrix (OSM).
+   * Communicates with the VIPER service to ensure output adheres to topological constraints
+   * and Adjectival Bounds, preventing Semantic Saponification.
+   *
+   * @async
+   * @function handleExtrude
+   * @returns {Promise<void>} Resolves when the extrusion is complete.
+   */
   const handleExtrude = async () => {
     if (!visualPrompt.trim()) return;
     setIsLoading(true);

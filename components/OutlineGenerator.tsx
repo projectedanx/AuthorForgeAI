@@ -27,8 +27,7 @@ interface OutlineGeneratorProps {
 
 /**
  * Functional component that orchestrates the generative outline process.
- * Acts as a secondary Epistemic Window, capable of displaying VULCAN escrow events
- * occurring specifically during the generation or refinement phases.
+ * Acts as a secondary Epistemic Window, capable of displaying VULCAN escrow events.
  *
  * @param {OutlineGeneratorProps} props - The topic and angle context.
  * @returns {React.ReactElement} The rendered OutlineGenerator interface.
@@ -46,8 +45,12 @@ const OutlineGenerator: React.FC<OutlineGeneratorProps> = ({ topic, angle }) => 
 
   /**
    * Orchestrates the CMDA refinement process.
-   * Invokes the Gemini service to topologically sculpt the existing outline based on a new contradictory human constraint.
-   * Updates component state with the refined results or resulting errors.
+   * Invokes the Gemini service to topologically sculpt the existing outline based on a new contradictory human constraint,
+   * holding the tension using paraconsistent logic.
+   *
+   * @async
+   * @function handleRefineOutline
+   * @returns {Promise<void>}
    */
   const handleRefineOutline = useCallback(async () => {
     if (!outline || !humanConstraint.trim()) return;
@@ -73,8 +76,12 @@ const OutlineGenerator: React.FC<OutlineGeneratorProps> = ({ topic, angle }) => 
    * Orchestrates the initial book outline generation process.
    * Handles asynchronous communication with the Gemini service and updates state based on
    * successful generation, standard errors, or Epistemic Escrow triggers (TopologyViolationError).
+   *
+   * @async
+   * @function handleGenerateOutline
+   * @returns {Promise<void>}
    */
-    const handleGenerateOutline = useCallback(async () => {
+  const handleGenerateOutline = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     setUncertaintyReport(null);

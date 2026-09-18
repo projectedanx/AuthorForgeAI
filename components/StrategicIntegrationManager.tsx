@@ -13,6 +13,16 @@ const StrategicIntegrationManager: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [uncertaintyReport, setUncertaintyReport] = useState<JustifiedUncertaintyReport | null>(null);
 
+  /**
+   * Orchestrates the strategic integration process.
+   * Transmits the system specification and human constraints to the backend,
+   * updating the UI based on structural validation (VULCAN) or generative success,
+   * while calculating the topological derivative of the structural tension.
+   *
+   * @async
+   * @function handleIntegrate
+   * @returns {Promise<void>} Resolves when the workflow generation is complete.
+   */
   const handleIntegrate = useCallback(async () => {
     if (!systemSpec.trim() || !humanConstraint.trim()) {
       setError('Please provide both the system specification and the human constraint.');

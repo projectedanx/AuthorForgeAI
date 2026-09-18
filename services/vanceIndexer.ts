@@ -30,6 +30,8 @@ export interface CFDIResult {
 /**
  * The VANCE Node acts as the Cartographer.
  * It does not parse strings; it maps structural execution boundaries.
+ * Enforces Draft-Conditioned Constrained Decoding (DCCD) by ensuring all AI-generated outputs
+ * strictly adhere to the expected structural scaffolding before being passed to the UI layer.
  */
 export class VanceSemanticIndexer {
   private static nflArchive: SymbolicScar[] = [];
@@ -76,9 +78,9 @@ export class VanceSemanticIndexer {
    * Validates high-entropy outputs against strict JSON-RPC 2.0 or internal schemas
    * BEFORE emission to prevent structural hallucination.
    *
-   * @param payload The generated payload payload.
-   * @param schema The strict schema to validate against (mocked validation for scaffolding).
-   * @returns Tuple of boolean validity and rejection string.
+   * @param {Record<string, any>} payload - The generated payload payload.
+   * @param {Record<string, any>} schema - The strict schema to validate against (mocked validation for scaffolding).
+   * @returns {ValidationResult} Tuple of boolean validity and rejection string.
    */
   public static dccd_guard(payload: Record<string, any>, schema: Record<string, any>): ValidationResult {
     // Scaffold: Validate required keys against the schema.
@@ -106,9 +108,11 @@ export class VanceSemanticIndexer {
 
   /**
    * Registers a failed payload pattern into the Nitinol Failure Ledger (NFL).
-   * Ensures the system 'springs back' and avoids regenerating known failure modes.
+   * Ensures the system 'springs back' and avoids regenerating known failure modes by logging
+   * the Symbolic Scar associated with the structural violation.
    *
-   * @param scar The SymbolicScar detailing the structural violation.
+   * @param {SymbolicScar} scar - The SymbolicScar detailing the structural violation.
+   * @returns {void}
    */
   public static registerNitinolScar(scar: SymbolicScar) {
     this.nflArchive.push(scar);

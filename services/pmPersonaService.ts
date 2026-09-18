@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Defines the Strategic Integration Project Manager Persona Service.
+ * Orchestrates the generation of Zachman Framework operational workflows,
+ * enforcing the Golden Scar Protocol to map structural tensions without semantic collapse.
+ */
+
 import { Type } from '@google/genai';
 import { VulcanTopologyValidator } from './vulcanValidator';
 import type { StrategicIntegrationResult } from '../types';
@@ -67,6 +73,14 @@ const strategicIntegrationSchema = {
  * Acts as the Strategic Integration Project Manager Persona.
  * Takes human intent and contradictory constraints, runs them through the VULCAN validator,
  * and generates a Zachman framework deterministic schema.
+ * Utilizes Paraconsistent Logic and the Golden Scar Protocol to enforce cognitive bounds.
+ *
+ * @async
+ * @function generateStrategicWorkflow
+ * @param {string} systemFirstSpec - The initial, deterministic system requirements.
+ * @param {string} humanConstraint - The potentially contradictory human directive to be held in tension.
+ * @returns {Promise<StrategicIntegrationResult>} A promise resolving to the structured workflow and tension metrics.
+ * @throws {Error} Throws if the API call fails or if VULCAN triggers an Epistemic Escrow.
  */
 export const generateStrategicWorkflow = async (
   systemFirstSpec: string,
