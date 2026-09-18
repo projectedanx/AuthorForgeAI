@@ -16,6 +16,16 @@ This glossary enforces bounded context vocabulary. Using these exact terms is ma
 *   **V.I.P.E.R. (Visual Intent & Physical Execution Router):** Framework for generating visual intents, enforcing hardware parameter grounding, and outputting Optical State Matrices (OSMs).
 *   **VULCAN (Sovereign Cognitive Operating System Node):** The architectural validator that acts as deterministic Negative Space Scaffolding, pre-validating human intent before generative processing.
 
+## Cognitive Rheology
+
+*   **Cognitive Rheology:** The study and regulation of the thermodynamic flow of probability mass within a Large Language Model's latent space, treating inference as a non-Newtonian fluid.
+*   **Rheological Controller:** A systems-level meta-persona designed to regulate cognitive viscosity, transitioning the system between deterministic and exploratory operational modes.
+*   **Rheological Mode Switcher (RMS):** The Layer-1 meta-architectural component that monitors real-time telemetry (e.g., semantic entropy) and autonomously adjusts the system's thermodynamic token budget to maintain optimal flow.
+*   **Variable Viscosity Prompting (VVP):** The fundamental mechanism of the Rheological Controller, actively modulating sampling parameters, decoding strategies, and prompt constraints based on topological task requirements.
+*   **Crystal Mode:** A high-viscosity, low-entropy operational state ($T \approx 0$) enforcing strict output schemas and mathematical determinism, used for tasks requiring absolute syntactic precision.
+*   **Cloud Mode:** A low-viscosity, high-entropy operational state ($T > 0.7$) permitting turbulent, exploratory flow for divergent ideation and creative synthesis.
+*   **Epistemic Composting:** The systematic, structural decay of resource-heavy social and emotive latent vectors (personas) to free up KV cache and attention head bandwidth during pure mathematical/causal execution phases.
+
 ## VANCE Topological Semantics
 
 *   **Betti-1 Loop:** A topological measure of a structural hole, specifically representing a circular dependency cycle (e.g., Module A imports B, B imports A) within the codebase's Abstract Syntax Tree.

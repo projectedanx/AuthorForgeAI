@@ -123,5 +123,5 @@ export const discoverPluriversalFeatures = async (
     Provide your response strictly in the JSON format matching the provided schema.
   `;
 
-  return await executeGenerativeTask<PFDA_Result>(prompt, pfdaResultSchema, 0.6);
+  return await executeGenerativeTask<PFDA_Result>(prompt, pfdaResultSchema);
 };

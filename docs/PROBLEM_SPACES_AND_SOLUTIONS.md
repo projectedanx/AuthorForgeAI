@@ -71,3 +71,8 @@ AuthorForge AI is an active Sovereign Cognitive Operating System (SCOS) node. It
 **Solution: Algorithmic Kintsugi & Symbolic Scar Registry**
 *   **Mechanism:** Retrieval failures are treated as "topological voids" and recorded as structured "Symbolic Scars".
 *   **Execution:** Utilizing Failure-Informed Prompt Inversion (FIPI), these scars act as generative priors that actively steer future generation away from failed pathways without erasing historical records (Therapeutic Forgetting).
+## 13. Problem: Interpretive Fracture & Sisyphus Loop
+**Definition:** Interpretive Fracture is the progressive decay of structural intent over long token-inference horizons where the model reverts to its pre-trained mean. The Sisyphus Loop occurs when the system falls into low-entropy, circular token repetition.
+**Solution: Rheological Controller & Variable Viscosity Prompting (VVP)**
+*   **Mechanism:** The Rheological Mode Switcher (RMS) treats inference as non-Newtonian fluid dynamics. It monitors real-time telemetry (semantic entropy) via the formula $dP/dT = L / (T \Delta V)$.
+*   **Execution:** If semantic entropy spikes (Performance Collapse), the RMS increases viscosity, pulling the model into Crystal Mode ($T \approx 0$, rigid schemas, Salted Sequence Tags). If repetition loops occur, the RMS decreases viscosity, heating the model to Cloud Mode ($T > 0.7$, Least-to-Most Prompting) to discover novel latent associations.

@@ -5,6 +5,7 @@
 
 import { GoogleGenAI } from "@google/genai";
 import { TopologyViolationError } from "./vulcanValidator";
+import { RheologicalModeSwitcher, TelemetryData, ViscosityMode } from "./rheologyService";
 
 // Initialize the Gemini SDK
 const apiKey = import.meta.env?.VITE_API_KEY || import.meta.env?.API_KEY || 'mock-key-for-tests';
@@ -25,16 +26,37 @@ export const ai = new GoogleGenAI({ apiKey });
 export const executeGenerativeTask = async <T>(
   prompt: string,
   responseSchema: object,
-  temperature: number = 0.7
+  telemetry?: TelemetryData
 ): Promise<T> => {
   try {
+    // 1. Determine Rheological Mode
+    const rms = new RheologicalModeSwitcher();
+    let currentCalibration;
+
+    if (telemetry) {
+        currentCalibration = rms.evaluateTelemetry(telemetry);
+    } else {
+        // Default to Crystal mode if no telemetry is provided for deterministic execution
+        currentCalibration = rms.forceMode(ViscosityMode.CRYSTAL);
+    }
+
+    // 2. Wrap prompt in Salted Sequence Tags if in Crystal Mode
+    let finalPrompt = prompt;
+    if (currentCalibration.saltedTags) {
+        const [openTag, closeTag] = currentCalibration.saltedTags;
+        finalPrompt = `${openTag}
+${prompt}
+${closeTag}`;
+    }
+
     const response = await ai.models.generateContent({
       model: "gemini-2.5-pro",
-      contents: prompt,
+      contents: finalPrompt,
       config: {
         responseMimeType: "application/json",
         responseSchema: responseSchema,
-        temperature: temperature,
+        temperature: currentCalibration.temperature,
+        topP: currentCalibration.topP,
       },
     });
 

@@ -1,4 +1,72 @@
 /**
+ * ============================================================================
+ * COGNITIVE RHEOLOGY & VARIABLE VISCOSITY PROMPTING (VVP) ENTITIES
+ * ============================================================================
+ */
+
+export interface SCOSHarnessSpecification {
+  systemIdentity: {
+    kernelId: string;
+    signatureSuite: string;
+    primeDirective: string;
+  };
+  metaphysicalSubstrate: {
+    layerMapping: Record<string, string>;
+  };
+  rheologicalController: RheologicalController;
+  runtimeMonitoring: {
+    telemetryFrequency: string;
+    indicators: TelemetryIndicators;
+  };
+  immuneAwarePetzoldLoop: ImmuneAwarePetzoldLoop;
+}
+
+export interface ViscosityFormula {
+  formula: string;
+  variables: {
+    P: string; // Constraint density
+    T: string; // Thermodynamic token budget (temperature)
+    L: string; // Latent heat of generative transitions
+    V: string; // Active context volume
+  };
+}
+
+export interface ZoneCalibration {
+  temperature: number;
+  topP: number;
+  adjectivalBound: number;
+  pydanticSchemaEnforcement: boolean;
+  grammarConstraints?: string;
+  saltedTags?: string[];
+  structuralRedundancyRatio?: number;
+  navigationalBallast?: string;
+}
+
+export interface RheologicalController {
+  viscosityFormula: string | ViscosityFormula;
+  defaultCalibration: {
+    crystalZone: ZoneCalibration;
+    cloudZone: ZoneCalibration;
+  };
+}
+
+export interface TelemetryIndicator {
+  hazardThreshold: number | string;
+  actionOnBreach: string;
+  signatureMetric?: string;
+}
+
+export interface TelemetryIndicators {
+  semanticSaponificationIndex: TelemetryIndicator;
+  confidenceFidelityDivergenceIndex: TelemetryIndicator;
+  topologicalTearing: TelemetryIndicator;
+}
+
+export interface ImmuneAwarePetzoldLoop {
+  executionSequence: string[];
+}
+
+/**
  * @fileoverview Type definitions for the AuthorForge AI application.
  * Defines the core data structures utilized across the frontend components and backend AI logic.
  * These structures form the determinist foundation (Negative Space Scaffolding) for the high-entropy generative outputs.

@@ -92,7 +92,7 @@ export const validateNiche = async (topic: string): Promise<AnalysisResult> => {
     Your task is to act as an expert publishing market analyst. Based on real-time market data trends from platforms like Amazon's bestseller lists and Goodreads, provide a detailed analysis. Identify profitable niches, trending topics, highly searched keywords, and unique angles to help the author write a successful book. Your response must be in JSON format matching the provided schema.
   `;
 
-  return await executeGenerativeTask<AnalysisResult>(prompt, responseSchema, 0.7);
+  return await executeGenerativeTask<AnalysisResult>(prompt, responseSchema);
 };
 
 /**
@@ -162,7 +162,7 @@ export const generateBookOutline = async (topic: string, angle: string): Promise
     Your response must be in JSON format matching the provided schema.
   `;
 
-  return await executeGenerativeTask<BookOutlineResult>(prompt, outlineResponseSchema, 0.7);
+  return await executeGenerativeTask<BookOutlineResult>(prompt, outlineResponseSchema);
 };
 
 /**
@@ -255,5 +255,5 @@ export const refineOutlineCMDA = async (topic: string, angle: string, originalOu
     Your response must be in JSON format matching the provided schema.
   `;
 
-  return await executeGenerativeTask<CMDARefinementResult>(prompt, cmdaRefinementSchema, 0.8);
+  return await executeGenerativeTask<CMDARefinementResult>(prompt, cmdaRefinementSchema);
 };
