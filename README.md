@@ -68,6 +68,7 @@ This repository is NOT a standard conversational LLM wrapper. It does NOT priori
 | `TopologyViolationError` | `vulcanValidator.ts` | `ValidationError` | A custom error thrown when an intent violates fundamental architectural topology (e.g., CAP Theorem). | `[GOLDEN_SCAR]` - Preserved over generic error names to enforce epistemic tension. |
 | `+++DCCDSchemaGuard` | `geminiService.ts` | JSON Parsing Logic | Draft-Conditioned Constrained Decoding, splitting inference into a semantic draft clamped by deterministic schema guards. | `[GOLDEN_SCAR]` - Cognitive Bytecode explicitly used instead of conversational prompt hints. |
 | `OutlineGenerator` | `OutlineGenerator.tsx`| `BookOutline` | Orchestrates generative outline process, acting as a secondary Epistemic Window for CMDA refinement. | `[CULTURAL_ARTIFACT]` |
+| `pkc_manifest.yml` | `metadata.json` | `[CxB] Executable Context Bundle` | The Sovereign PKC YAML Schema Specification acting as a semantic tether. | `[GOLDEN_SCAR]` - Enforces "Design by Contract" validation over unstructured bags of words. |
 
 ---
 ## TIER 2: Architecture Topology Map
@@ -177,6 +178,21 @@ sequenceDiagram
 
 3. **Initialize the Node:**
    `npm run dev &` *(run in background if required)*
+
+
+### Automated "Flesh-to-Symbol" Ingestion Loop (Zotero + OCR)
+
+**Prerequisites:** Python 3, `pip install watchdog pdfplumber pyyaml`
+
+*   **Purpose:** Constructs a seamless bridge between messy, unstructured external PDFs and the structured local database. It automatically extracts text, simulates identifying arguments and relationships, and creates nodes in the `pkc_manifest.yml`.
+*   **Setup:** Run the script in the background pointing to your attachment directory. Example: `python scripts/zotero_ingestion_loop.py /path/to/zotero/attachments &`.
+
+### Git-Anchored Context Hashing CLI Pipeline
+
+**Prerequisites:** Python 3
+
+*   **Purpose:** Eliminates manual schema updates and establishes "Trust-by-Design" versioning for the Personal Knowledge Corpus. It automatically recalculates SHA-256 hashes of markdown files on commit.
+*   **Setup:** Ensure `pkc_manifest.yml` exists in the root directory. To enable the hook, run `git config core.hooksPath scripts`. The `scripts/pre-commit` script will then parse and seal document hashes automatically.
 
 **To Deploy a Change to Production:**
 *   ⚠️ **MANUAL OPERATION REQUIRED:** Due to the "Orphaned Infrastructure" and "Phantom CI" identified in the 0xCARTO analysis, there is no automated deployment. You must manually build the application (`npm run build`) and deploy the `dist/` directory to your hosting provider.
