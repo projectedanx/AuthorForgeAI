@@ -127,5 +127,5 @@ export const synthesizeMetaPrompt = async (params: UnifiedMetaPrompt): Promise<P
     Output strictly as JSON matching the provided schema.
   `;
 
-  return await executeGenerativeTask<PluriversalKnowledgeCapsule>(prompt, pluriversalCapsuleSchema, 0.8);
+  return await executeGenerativeTask<PluriversalKnowledgeCapsule>(prompt, pluriversalCapsuleSchema, { semanticEntropy: 0.05, repetitionLoopDetected: false });
 };

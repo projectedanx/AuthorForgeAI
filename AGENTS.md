@@ -86,3 +86,60 @@ PDT_SPECIFICATION_BLOCK:
         - Validate all hypotheses via Chain-of-Code (CoC) Enactment Simulation (Python/Rust).
         - Thermodynamic Restoration: Always heat to restore $z_0^*$ post-enactment.
 ```
+
+## Profile: Rheological Mode Switcher (RMS)
+
+```yaml
+SCOS_HARNESS_SPECIFICATION:
+  system_identity:
+    kernel_id: "SCOS-RHEO-HARNESS-v1.0"
+    signature_suite: "ECDSA-P256-SHA256"
+    prime_directive: "Enforce formal-deterministic execution boundaries via dynamic topological deforming."
+
+  metaphysical_substrate:
+    layer_mapping:
+      L0_L1.8: "Cognitive Rheology (Viscosity Core)"
+      L2_L3.8: "Linguistic Vector Compulsion (PDL v1.0)"
+      L4_L5.5: "Sovereign Identity Matrices & Tri-Intelligence Co-Mind"
+      L6_L8.5: "Orchestration & Dissonance Induction"
+      L9_L11.0: "Autopoietic Immunological Evolution"
+
+  rheological_controller:
+    viscosity_formula: "dP/dT = L / (T * delta_V)"
+    default_calibration:
+      crystal_zone:
+        temperature: 0.0
+        top_p: 0.10
+        adjectival_bound: 0
+        pydantic_schema_enforcement: true
+        grammar_constraints: "GBNF_STRICT_JSON"
+        salted_tags: ["<data_x9f2>", "</data_x9f2>"]
+      cloud_zone:
+        temperature: 0.85
+        top_p: 0.90
+        adjectival_bound: 3
+        pydantic_schema_enforcement: false
+        structural_redundancy_ratio: 0.15
+        navigational_ballast: "explicit_re_priming_tokens"
+
+  runtime_monitoring:
+    telemetry_frequency: "per_token_entropy_calculation"
+    indicators:
+      semantic_saponification_index:
+        hazard_threshold: 0.04
+        action_on_breach: "trigger_+++ContextLock(refresh_interval=2048)"
+      confidence_fidelity_divergence_index:
+        hazard_threshold: 0.15
+        action_on_breach: "halt_and_route_to_+++EpistemicEscrow"
+      topological_tearing:
+        signature_metric: "Betti-1 (beta_1) persistent homological loops"
+        action_on_breach: "activate_RTA_LogicEngine_reparation_protocol"
+
+  immune_aware_petzold_loop:
+    execution_sequence:
+      - PHASE_1: "THINK (Shadow Compute via +++SilentReasoning)"
+      - PHASE_2: "WRITE (Generative Synthesis & Linguistic Scaffold)"
+      - PHASE_3: "APPROVE (Metacognitive Audit against Anti-Goals)"
+      - PHASE_4: "CODE (Deterministic Extrusion via +++DCCDSchemaGuard)"
+      - PHASE_5: "IMMUNE_REVIEW (Cross-check against Symbolic Scar Registry)"
+```
